@@ -5,8 +5,8 @@ using namespace geode::prelude;
 
 // Stolen from createtogether lol
 
-CreateTogetherCursor* CreateTogetherCursor::create(const CursorData& cursorData) {
-    auto ret = new CreateTogetherCursor();
+SimpleCursor* SimpleCursor::create(const CursorData& cursorData) {
+    auto ret = new SimpleCursor();
     if (ret->init(cursorData)) {
         ret->autorelease();
         return ret;
@@ -16,7 +16,7 @@ CreateTogetherCursor* CreateTogetherCursor::create(const CursorData& cursorData)
     return nullptr;
 }
 
-void CreateTogetherCursor::updateCursor(const CursorData& cursorData) {
+void SimpleCursor::updateCursor(const CursorData& cursorData) {
     auto gameManager = GameManager::get();
     this->m_cursorData = cursorData;
     this->m_cursorSprite->updatePlayerFrame(cursorData.cursorID, IconType::Wave);
@@ -31,11 +31,11 @@ void CreateTogetherCursor::updateCursor(const CursorData& cursorData) {
     }
 }
 
-SimplePlayer* CreateTogetherCursor::getSimplePlayer() {
+SimplePlayer* SimpleCursor::getSimplePlayer() {
     return this->m_cursorSprite;
 }
 
-bool CreateTogetherCursor::init(const CursorData& cursorData) {
+bool SimpleCursor::init(const CursorData& cursorData) {
     if (!CCNode::init()) {
         return false;
     }

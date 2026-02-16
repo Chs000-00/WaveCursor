@@ -7,7 +7,7 @@
 using namespace geode::prelude;
 
 // Thanks createtogether!
-class CreateTogetherCursor : public cocos2d::CCNode, public cocos2d::CCRGBAProtocol  {
+class SimpleCursor : public cocos2d::CCNode, public cocos2d::CCRGBAProtocol  {
 public:
 
     struct CursorData {
@@ -18,8 +18,8 @@ public:
         int cursorGlowColor;
     };
 
-    static CreateTogetherCursor* create(const CursorData& cursorData);
-    // static CreateTogetherCursor* create(int cursorColor1, int cursorColor2);
+    static SimpleCursor* create(const CursorData& cursorData);
+    // static SimpleCursor* create(int cursorColor1, int cursorColor2);
 
     // static CursorData defaultCursorData(int cursorColor1, int cursorColor2);
 

@@ -1,5 +1,9 @@
 #include "CursorManager.hpp"
-// #include "Geode/cocos/platform/mac/CCEGLView.h"
+
+#ifdef GEODE_IS_MACOS
+    #include "Geode/cocos/platform/mac/CCEGLView.h"
+#endif
+
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/binding/GameManager.hpp>

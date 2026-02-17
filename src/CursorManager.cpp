@@ -1,4 +1,5 @@
 #include "CursorManager.hpp"
+// #include "Geode/cocos/platform/mac/CCEGLView.h"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/binding/GameManager.hpp>
@@ -36,7 +37,12 @@ void CursorManager::updateOrInit() {
 }
 
 void CursorManager::updateToPosition() {
-    PlatformToolbox::hideCursor();
+    
+    #ifdef GEODE_IS_WINDOWS
+        PlatformToolbox::hideCursor();
+    #elifdef GEODE_IS_MACOS
+        CCEGLView::showCursor(false);
+    #endif
     
     this->m_cursor->setPosition(getMousePos());
 

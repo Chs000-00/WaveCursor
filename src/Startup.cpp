@@ -1,6 +1,7 @@
 #include "CursorManager.hpp"
 #include "Geode/DefaultInclude.hpp"
 #include <Geode/Geode.hpp>
+#include <Geode/binding/PlatformToolbox.hpp>
 
 using namespace geode::prelude;
 
@@ -13,9 +14,12 @@ public:
 
 
 $execute {
-    auto cursorManager = CursorManager::get();
-    cursorManager->updateOrInit();
-        Loader::get()->queueInMainThread([]{
+    
+    PlatformToolbox::hideCursor();
+
+    CursorManager::get()->updateOrInit();
+    
+    Loader::get()->queueInMainThread([]{
         CCScheduler::get()->scheduleUpdateForTarget(new NetworkScheduler{}, 5000, false);
     });
 }

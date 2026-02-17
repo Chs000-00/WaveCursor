@@ -48,7 +48,5 @@ public:
 
 protected:
     bool init(const CursorData& cursorData);
-
     CursorData m_cursorData;
-
 };

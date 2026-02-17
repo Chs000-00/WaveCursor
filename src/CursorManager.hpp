@@ -8,6 +8,7 @@ private:
     SimpleCursor* m_cursor = nullptr;
 
 public:
+    bool m_forceHide = false;
     void updateOrInit();
     void updateToPosition();
     void visible(bool state);

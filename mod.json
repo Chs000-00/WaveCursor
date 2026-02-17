@@ -8,5 +8,19 @@
 	"name": "WaveCursor",
 	"version": "v1.0.0",
 	"developer": "chs000",
-	"description": ""
+	"description": "",
+	"dependencies": {
+		"alphalaneous.alphas-ui-pack": ">=v1.0.1"
+	},
+	"settings": {
+		"always-force-hide-cursor": {
+            "type": "bool",
+            "name": "Always force hide cursor",
+			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing.",
+			"default": false
+        }
+	},
+	"tags": [
+		"customization", "enhancement", "universal", "interface"
+	]
 }

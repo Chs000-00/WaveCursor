@@ -1,13 +1,10 @@
 #include "CursorManager.hpp"
-
-#ifdef GEODE_IS_MACOS
-    #include "Geode/cocos/platform/mac/CCEGLView.h"
-#endif
-
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/binding/GameManager.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
+#include "alphalaneous.alphas-ui-pack/include/API.hpp"
+
 
 void CursorManager::updateOrInit() {
     auto gameManager = GameManager::get();
@@ -41,14 +38,11 @@ void CursorManager::updateOrInit() {
 }
 
 void CursorManager::updateToPosition() {
-    
-    #ifdef GEODE_IS_WINDOWS
-        PlatformToolbox::hideCursor();
-    #elifdef GEODE_IS_MACOS
-        CCEGLView::showCursor(false);
-    #endif
-    
     this->m_cursor->setPosition(getMousePos());
+
+    if(this->m_forceHide) {
+        alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
+    }
 
     // eclipse moment
     bool canShowInLevel = true;

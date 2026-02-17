@@ -1,5 +1,4 @@
 #include "CursorManager.hpp"
-#include "Geode/cocos/platform/win32/CCEGLView.h"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/binding/GameManager.hpp>
@@ -37,9 +36,8 @@ void CursorManager::updateOrInit() {
 }
 
 void CursorManager::updateToPosition() {
-    if (!CCEGLView::get()->getShouldHideCursor()) {
-        PlatformToolbox::hideCursor();
-    }
+    PlatformToolbox::hideCursor();
+    
     this->m_cursor->setPosition(getMousePos());
 
     // eclipse moment

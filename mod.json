@@ -32,6 +32,6 @@
 		"customization", "enhancement", "universal", "interface"
 	],
 	"dependencies": {
-		"alphalaneous.alphas-ui-pack": "v1.0.1"
+		"alphalaneous.alphas-ui-pack": "v1.0.0"
 	}
 }

@@ -1,5 +1,5 @@
 {
-	"geode": "5.0.0-beta.1",
+	"geode": "5.0.0-beta.2",
 	"gd": {
 		"win": "2.2081",
 		"mac": "2.2081"
@@ -8,7 +8,7 @@
 	"name": "WaveCursor",
 	"version": "v1.0.0",
 	"developer": "chs000",
-	"description": "",
+	"description": "Changes your in-game cursor to your wave icon",
 	"dependencies": {
 		"alphalaneous.alphas-ui-pack": ">=v1.0.1"
 	},

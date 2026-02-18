@@ -1,3 +1,2 @@
-# Template Mod
-
-Edit about.md to change this
+# WaveCursor
+Changes your in-game cursor to match your wave icon.

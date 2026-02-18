@@ -9,9 +9,6 @@
 	"version": "v1.0.0",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
-	"dependencies": {
-		"alphalaneous.alphas-ui-pack": ">=v1.0.1"
-	},
 	"settings": {
 		"cursor-size": {
             "type": "int",
@@ -33,5 +30,8 @@
 	},
 	"tags": [
 		"customization", "enhancement", "universal", "interface"
-	]
+	],
+	"dependencies": {
+		"alphalaneous.alphas-ui-pack": ">=v1.0.1"
+	}
 }

@@ -1,8 +1,11 @@
 #include "CursorManager.hpp"
+#include "Geode/loader/Log.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
+#include <Geode/Enums.hpp>
 #include <Geode/binding/GameManager.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
+#include <Geode/binding/PlayLayer.hpp>
 #include "alphalaneous.alphas-ui-pack/include/API.hpp"
 
 
@@ -47,15 +50,11 @@ void CursorManager::updateToPosition() {
     // eclipse moment
     bool canShowInLevel = true;
     if (auto* playLayer = PlayLayer::get()) {
-        canShowInLevel = playLayer->m_hasCompletedLevel ||
-                          playLayer->m_isPaused ||
-                          GameManager::get()->getGameVariable("0024");
+        canShowInLevel = playLayer->m_hasCompletedLevel || 
+        playLayer->m_isPaused || 
+        (!GameManager::get()->getGameVariable(GameVar::LockCursor));
     }
 
-    this->visible(canShowInLevel);
-}
-
-void CursorManager::visible(bool state) {
-    this->m_cursor->setVisible(state);
+    this->m_cursor->setVisible(canShowInLevel);
 }
 

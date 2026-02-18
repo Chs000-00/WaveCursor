@@ -16,7 +16,7 @@
 			"description": "How large should the cursor appear?",
             "default": 55,
             "min": 40,
-            "max": 80,
+            "max": 90,
             "control": {
                 "slider": true
             }
@@ -36,5 +36,8 @@
       		"version": ">=v1.0.1",
 			"required": true
 		}
+	},
+	"links": {
+		"source": "https://github.com/Chs000-00/WaveCursor"
 	}
 }

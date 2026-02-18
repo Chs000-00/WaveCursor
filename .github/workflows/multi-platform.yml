@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         config:
         - name: Windows
@@ -28,6 +28,7 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           combine: true
+          cli: nightly
           target: ${{ matrix.config.target }}
 
   package:

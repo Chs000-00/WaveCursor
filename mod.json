@@ -13,6 +13,17 @@
 		"alphalaneous.alphas-ui-pack": ">=v1.0.1"
 	},
 	"settings": {
+		"cursor-size": {
+            "type": "int",
+            "name": "Cursor size",
+			"description": "How large should the cursor appear?",
+            "default": 55,
+            "min": 40,
+            "max": 80,
+            "control": {
+                "slider": true
+            }
+        },
 		"always-force-hide-cursor": {
             "type": "bool",
             "name": "Always force hide cursor",

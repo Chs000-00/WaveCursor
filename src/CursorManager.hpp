@@ -9,6 +9,7 @@ private:
 
 public:
     bool m_forceHide = false;
+    float m_cursorSize;
     void updateOrInit();
     void updateToPosition();
     void visible(bool state);

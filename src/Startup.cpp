@@ -20,8 +20,11 @@ $execute {
 
     auto c =  CursorManager::get();
 
-   c->updateOrInit();
-   c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
+    c->m_cursorSize = ((float)Mod::get()->getSettingValue<int>("cursor-size"))/100;
+    c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
+
+    c->updateOrInit();
+
     
     Loader::get()->queueInMainThread([]{
         CCScheduler::get()->scheduleUpdateForTarget(new NetworkScheduler{}, 5000, false);
@@ -29,6 +32,12 @@ $execute {
 
     listenForSettingChanges<bool>("always-force-hide-cursor", [](bool value) {
         CursorManager::get()->m_forceHide = value;
+    });
+
+    listenForSettingChanges<int>("cursor-size", [](int value) {
+        auto c =  CursorManager::get();
+        c->m_cursorSize = ((float)value)/100;
+        c->updateOrInit();
     });
 
 }

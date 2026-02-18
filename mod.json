@@ -33,7 +33,7 @@
 	],
 	"dependencies": {
 		 "alphalaneous.alphas-ui-pack": {
-      "version": ">=v10.1"
+      "version": ">=v1.0.1"
 		}
 	}
 }

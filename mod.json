@@ -1,8 +1,8 @@
 {
-	"geode": "5.0.0-beta.2",
+	"geode": "4.10.0",
 	"gd": {
-		"win": "2.2081",
-		"mac": "2.2081"
+		"win": "2.2074",
+		"mac": "2.2074",
 	},
 	"id": "chs000.wavecursor",
 	"name": "WaveCursor",
@@ -33,7 +33,7 @@
 	],
 	"dependencies": {
 		 "alphalaneous.alphas-ui-pack": {
-      "version": ">=v1.0.1"
+      "version": ">=v1.0.0"
 		}
 	}
 }

@@ -47,3 +47,38 @@ bool SimpleCursor::init(const CursorData& cursorData) {
     this->updateCursor(cursorData);
     return true;
 }
+
+void SimpleCursor::createPlainTrail() {
+    if (this->m_hardTrail) { this->m_hardTrail->setVisible(false); }
+    if (this->m_ghostTrail) { this->m_ghostTrail->setVisible(false); }
+
+    if (this->m_plainTrail) {
+         this->m_plainTrail->setVisible(true); 
+    } else {
+
+    }
+}
+
+
+void SimpleCursor::createHardTrail() {
+    if (this->m_plainTrail) { this->m_plainTrail->setVisible(false); }
+    if (this->m_ghostTrail) { this->m_ghostTrail->setVisible(false); }
+
+    if (this->m_hardTrail) {
+         this->m_hardTrail->setVisible(true); 
+    } else {
+
+    }
+}
+
+
+void SimpleCursor::createGhostTrail() {
+    if (this->m_plainTrail) { this->m_plainTrail->setVisible(false); }
+    if (this->m_hardTrail) { this->m_hardTrail->setVisible(false); }
+
+    if (this->m_ghostTrail) {
+         this->m_ghostTrail->setVisible(true); 
+    } else {
+
+    }
+}

@@ -1,4 +1,4 @@
-#include "CursorManager.hpp"
+#include "../CursorManager.hpp"
 #include <Geode/Modify/GJGarageLayer.hpp>
 
 using namespace geode::prelude;
@@ -6,6 +6,6 @@ using namespace geode::prelude;
 class $modify(GJGarageLayer) {
     void onSelect(CCObject* sender) {
         GJGarageLayer::onSelect(sender);
-        CursorManager::get()->updateOrInit();
+        CursorManager::get()->createCursor();
     }
 };

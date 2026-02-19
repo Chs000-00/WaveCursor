@@ -1,15 +1,14 @@
 #include "CursorManager.hpp"
-#include "Geode/loader/Log.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/Enums.hpp>
 #include <Geode/binding/GameManager.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
 #include <Geode/binding/PlayLayer.hpp>
-#include "alphalaneous.alphas-ui-pack/include/API.hpp"
+#include "alphalaneous.alphas-ui-pack/include/API.hpp" // IWYU pragma: keep
 
 
-void CursorManager::updateOrInit() {
+void CursorManager::createCursor() {
     auto gameManager = GameManager::get();
 
     if (!this->m_cursor) {
@@ -40,21 +39,36 @@ void CursorManager::updateOrInit() {
     this->m_cursor->setScale(this->m_cursorSize);
 }
 
-void CursorManager::updateToPosition() {
+void CursorManager::update() {
     this->m_cursor->setPosition(getMousePos());
 
     if(this->m_forceHide) {
         alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
     }
 
+    if(this->m_enableTrail) {
+
+    }
+
     // eclipse moment
     bool canShowInLevel = true;
     if (auto* playLayer = PlayLayer::get()) {
+        auto g = GameManager::get();
         canShowInLevel = playLayer->m_hasCompletedLevel || 
         playLayer->m_isPaused || 
-        (!GameManager::get()->getGameVariable(GameVar::LockCursor));
+        (!g->getGameVariable(GameVar::LockCursor)) ||
+        (g->getGameVariable(GameVar::ShowCursor));
     }
 
     this->m_cursor->setVisible(canShowInLevel);
 }
 
+void CursorManager::setCursorSize(int size) {
+    this->m_cursorSize = ((float)size)/100;
+    this->createCursor();
+}
+
+void CursorManager::enableTrail(bool enable) {
+    this->m_enableTrail = enable;
+    this->createCursor();
+}

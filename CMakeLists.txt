@@ -11,7 +11,11 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(WaveCursor VERSION 1.0.1)
 
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS 
+    src/*.cpp
+    src/settings/*.cpp
+    src/hooks/*.cpp
+)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 

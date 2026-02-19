@@ -6,10 +6,20 @@
 	},
 	"id": "chs000.wavecursor",
 	"name": "WaveCursor",
-	"version": "v1.0.1",
+	"version": "v1.1.0",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
 	"settings": {
+		"cursor": {
+			"type": "title",
+			"name": "Cursor"
+		},
+		"enable-cursor": {
+			"type": "bool",
+			"name": "Enable custom cursor",
+			"description": "Enables or disables the wave cursor.",
+			"default": true
+		},
 		"cursor-size": {
             "type": "int",
             "name": "Cursor size",
@@ -19,14 +29,42 @@
             "max": 90,
             "control": {
                 "slider": true
-            }
+            },
+			"enable-if": "enable-cursor"
         },
 		"always-force-hide-cursor": {
             "type": "bool",
-            "name": "Always force hide cursor",
+            "name": "Always force hide cursor.",
 			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing.",
 			"default": false
-        }
+        },
+		"trail": {
+			"type": "title",
+			"name": "Trail"
+		},
+		"enable-trail": {
+			"type": "bool",
+			"name": "Enable Trail",
+			"description": "Enable or disable showing a trail following the mouse cursor",
+			"default": true
+		},
+		"disable-trail-on-playtest": {
+			"type": "bool",
+			"name": "Disable Trail during playtest",
+			"description": "Disables the trail while playing a level for better sight-reading. This will have no affect if lock-cursor is on.",
+			"enable-if": "enable-trail"
+		},
+		"trail-type": {
+			"type": "string",
+			"name": "Trail type",
+			"description": "What type of trail should the mouse inherit?",
+			"one-of": [
+				"Plain Trail",
+				"Hard Streak",
+				"Ghost Trail"
+			],
+			"enable-if": "enable-trail"
+		}
 	},
 	"tags": [
 		"customization", "enhancement", "universal", "interface"

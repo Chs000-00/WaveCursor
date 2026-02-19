@@ -52,7 +52,8 @@
 			"type": "bool",
 			"name": "Disable Trail during playtest",
 			"description": "Disables the trail while playing a level for better sight-reading. This will have no affect if lock-cursor is on.",
-			"enable-if": "enable-trail"
+			"enable-if": "enable-trail",
+			"default": true
 		},
 		"trail-type": {
 			"type": "string",
@@ -63,7 +64,8 @@
 				"Hard Streak",
 				"Ghost Trail"
 			],
-			"enable-if": "enable-trail"
+			"enable-if": "enable-trail",
+			"default": "Plain Trail"
 		}
 	},
 	"tags": [

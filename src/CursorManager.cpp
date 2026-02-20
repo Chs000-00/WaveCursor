@@ -1,5 +1,4 @@
 #include "CursorManager.hpp"
-#include "Geode/loader/Log.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/Enums.hpp>

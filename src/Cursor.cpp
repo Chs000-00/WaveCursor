@@ -1,11 +1,11 @@
 #include "Cursor.hpp"
 #include "Geode/binding/GameManager.hpp"
 #include "Geode/cocos/CCScheduler.h"
+#include "Geode/cocos/cocoa/CCGeometry.h"
 #include "Geode/cocos/cocoa/CCObject.h"
 #include "Geode/cocos/misc_nodes/CCMotionStreak.h"
 #include "Geode/cocos/sprite_nodes/CCSprite.h"
-#include "Geode/cocos/textures/CCTexture2D.h"
-#include "Geode/ui/IconButtonSprite.hpp"
+#include "Geode/cocos/textures/CCTextureCache.h"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Geode/utils/cocos.hpp"
 #include "ccTypes.h"
@@ -59,7 +59,7 @@ bool SimpleCursor::init(const CursorData& cursorData) {
     this->m_cursorSprite->setPosition(this->m_cursorSprite->m_outlineSprite->getScaledContentSize() / 2);
     this->updateCursor(cursorData);
 
-    CCScheduler::get()->scheduleSelector(schedule_selector(SimpleCursor::update), this, 0.0, kCCRepeatForever, 0.0, false);
+    CCScheduler::get()->scheduleUpdateForTarget(this, 5500, false);
 
     return true;
 }
@@ -68,17 +68,21 @@ void SimpleCursor::createPlainTrail() {
     if (this->m_hardTrail) { this->m_hardTrail->setVisible(false); }
     if (this->m_ghostTrail) { this->m_ghostTrail->setVisible(false); }
 
+    auto gm = GameManager::get();
+
     if (this->m_plainTrail) {
         this->m_plainTrail->setVisible(true); 
-        this->m_plainTrail->release();
+        auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
+        this->m_plainTrail->setTexture(CCTextureCache::get()->addImage(sprite.c_str(), false));
+    } else {
+        auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
+        auto texture = CCTextureCache::get()->addImage(sprite.c_str(), false);
+        this->m_plainTrail = CCMotionStreak::create(0.5, 2, 10, ccWHITE, texture);
+        OverlayManager::get()->addChild(this->m_plainTrail);
+        this->m_plainTrail->setID("cursor-plain-trail"_spr); 
+        this->m_plainTrail->setZOrder(-1);
+        this->m_plainTrail->setBlendFunc({ GL_SRC_ALPHA, GL_ONE });   
     }
-    auto gm = GameManager::get();
-    auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
-    log::info("Loading PlainStreak {}", sprite);
-    this->m_plainTrail = CCMotionStreak::create(0.5, 2, 10, ccWHITE, sprite.c_str());
-    OverlayManager::get()->addChild(this->m_plainTrail);
-    this->m_plainTrail->setID("cursor-plain-trail"_spr); 
-    this->m_plainTrail->setZOrder(-1);
 }
 
 
@@ -107,6 +111,7 @@ void SimpleCursor::createGhostTrail() {
 
 void SimpleCursor::update(float dt) {
     if(this->m_plainTrail) {
-        this->m_plainTrail->setPosition(getMousePos());
+        // I love absolllute (position)
+        this->m_plainTrail->setPosition(this->convertToWorldSpace(this->getSimplePlayer()->getPosition()));
     }
 }

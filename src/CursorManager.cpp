@@ -1,4 +1,5 @@
 #include "CursorManager.hpp"
+#include "Geode/loader/Log.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
 #include <Geode/Enums.hpp>
@@ -37,6 +38,13 @@ void CursorManager::createCursor() {
 
     this->m_cursor->setRotation(240);
     this->m_cursor->setScale(this->m_cursorSize);
+
+
+    if(this->m_enableTrail) {
+        this->m_cursor->m_trail = SimpleCursor::Plain;
+        this->m_cursor->createPlainTrail();
+    }
+
 }
 
 void CursorManager::update() {
@@ -44,10 +52,6 @@ void CursorManager::update() {
 
     if(this->m_forceHide) {
         alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
-    }
-
-    if(this->m_enableTrail) {
-
     }
 
     // eclipse moment

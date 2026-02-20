@@ -5,9 +5,9 @@
 
 class CursorManager: public Singleton<CursorManager> {
 private:
-    SimpleCursor* m_cursor = nullptr;
     float m_cursorSize;
     bool m_enableTrail = false;
+    Ref<SimpleCursor> m_cursor = nullptr;
 
 public:
     bool m_forceHide = false;

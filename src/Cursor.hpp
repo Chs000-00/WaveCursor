@@ -33,6 +33,7 @@ public:
     void updateCursor(const CursorData& cursorData);
     SimplePlayer* getSimplePlayer();
 
+    void update(float dt);
 
     // Thanks again globed!
     void setColor(const cocos2d::ccColor3B& color) { m_cursorSprite->setColor(color); }
@@ -50,6 +51,11 @@ public:
     void setCascadeOpacityEnabled(bool cascadeOpacityEnabled) { m_cursorSprite->setCascadeOpacityEnabled(cascadeOpacityEnabled); }
     void updateDisplayedOpacity(GLubyte opacity) { m_cursorSprite->updateDisplayedOpacity(opacity); }
 
+    TrailType m_trail;
+
+    void createPlainTrail();
+    void createGhostTrail();
+    void createHardTrail();
 
 
 protected:
@@ -61,11 +67,4 @@ protected:
     Ref<CCMotionStreak> m_plainTrail = nullptr;
     Ref<GhostTrailEffect> m_ghostTrail = nullptr;
     Ref<HardStreak> m_hardTrail = nullptr;
-
-    TrailType m_trail;
-
-    void createPlainTrail();
-    void createGhostTrail();
-    void createHardTrail();
-
 };

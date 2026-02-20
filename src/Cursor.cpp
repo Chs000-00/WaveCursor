@@ -81,7 +81,7 @@ void SimpleCursor::createPlainTrail() {
         OverlayManager::get()->addChild(this->m_plainTrail);
         this->m_plainTrail->setID("cursor-plain-trail"_spr); 
         this->m_plainTrail->setZOrder(-1);
-        // this->m_plainTrail->setBlendFunc({ GL_SRC_ALPHA, GL_ONE });   
+        this->m_plainTrail->setBlendFunc({ GL_SRC_ALPHA, GL_ONE });   
     }
 }
 

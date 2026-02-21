@@ -14,12 +14,6 @@
 			"type": "title",
 			"name": "Cursor"
 		},
-		"enable-cursor": {
-			"type": "bool",
-			"name": "Enable custom cursor",
-			"description": "Enables or disables the wave cursor.",
-			"default": true
-		},
 		"cursor-size": {
             "type": "int",
             "name": "Cursor size",

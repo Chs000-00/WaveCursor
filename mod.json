@@ -49,18 +49,6 @@
 			"enable-if": "enable-trail",
 			"default": true
 		},
-		"trail-type": {
-			"type": "string",
-			"name": "Trail type",
-			"description": "What type of trail should the mouse inherit?",
-			"one-of": [
-				"Plain Trail",
-				"Hard Streak",
-				"Ghost Trail"
-			],
-			"enable-if": "enable-trail",
-			"default": "Plain Trail"
-		},
 		"advanced": {
 			"type": "title",
 			"name": "Advanced settings"

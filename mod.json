@@ -32,12 +32,6 @@
             },
 			"enable-if": "enable-cursor"
         },
-		"always-force-hide-cursor": {
-            "type": "bool",
-            "name": "Always force hide cursor.",
-			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing.",
-			"default": false
-        },
 		"trail": {
 			"type": "title",
 			"name": "Trail"
@@ -66,7 +60,17 @@
 			],
 			"enable-if": "enable-trail",
 			"default": "Plain Trail"
-		}
+		},
+		"advanced": {
+			"type": "title",
+			"name": "Advanced settings"
+		},
+		"always-force-hide-cursor": {
+            "type": "bool",
+            "name": "Always force hide cursor.",
+			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing.",
+			"default": false
+        }
 	},
 	"tags": [
 		"customization", "enhancement", "universal", "interface"

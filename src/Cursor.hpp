@@ -19,11 +19,12 @@ public:
         int cursorGlowColor;
     };
 
-    enum TrailType {
-        Plain,
-        Ghost,
-        Hard
-    };
+    // enum TrailType {
+    //     Disabled,
+    //     Plain,
+    //     Ghost,
+    //     Hard
+    // };
 
     static SimpleCursor* create(const CursorData& cursorData);
     // static SimpleCursor* create(int cursorColor1, int cursorColor2);
@@ -51,11 +52,13 @@ public:
     void setCascadeOpacityEnabled(bool cascadeOpacityEnabled) { m_cursorSprite->setCascadeOpacityEnabled(cascadeOpacityEnabled); }
     void updateDisplayedOpacity(GLubyte opacity) { m_cursorSprite->updateDisplayedOpacity(opacity); }
 
-    TrailType m_trail;
+    // TrailType m_trail;
 
     void createPlainTrail();
     void createGhostTrail();
     void createHardTrail();
+
+    void disableAllTrails();
 
 
 protected:

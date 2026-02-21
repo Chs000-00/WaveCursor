@@ -40,8 +40,10 @@ void CursorManager::createCursor() {
 
 
     if(this->m_enableTrail) {
-        this->m_cursor->m_trail = SimpleCursor::Plain;
+        // this->m_cursor->m_trail = SimpleCursor::Plain;
         this->m_cursor->createPlainTrail();
+    } else {
+        this->m_cursor->disableAllTrails();
     }
 
 }

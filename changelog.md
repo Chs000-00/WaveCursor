@@ -1,8 +1,4 @@
-# 1.1.1
-
-- Disabled useless setting
-
-# 1.1.0  
+# 1.1.2
 
 - Added Cursor trails
 - Fixed Changing to fullscreen breaking the cursor

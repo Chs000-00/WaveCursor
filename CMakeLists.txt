@@ -9,7 +9,7 @@ endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
-project(WaveCursor VERSION 1.1.2)
+project(WaveCursor VERSION 1.1.3)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS 
     src/*.cpp

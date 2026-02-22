@@ -1,11 +1,12 @@
 {
 	"geode": "5.0.0-beta.3",
 	"gd": {
-		"win": "2.2081"
+		"win": "2.2081",
+		"mac": "2.2081"
 	},
 	"id": "chs000.wavecursor",
 	"name": "Wave Cursor",
-	"version": "v1.1.2",
+	"version": "v1.1.3",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
 	"settings": {

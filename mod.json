@@ -6,7 +6,7 @@
 	},
 	"id": "chs000.wavecursor",
 	"name": "Wave Cursor",
-	"version": "v1.1.0",
+	"version": "v1.1.1",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
 	"settings": {
@@ -34,13 +34,6 @@
 			"type": "bool",
 			"name": "Enable Trail",
 			"description": "Enable or disable showing a trail following the mouse cursor",
-			"default": true
-		},
-		"disable-trail-on-playtest": {
-			"type": "bool",
-			"name": "Disable Trail during playtest",
-			"description": "Disables the trail while playing a level for better sight-reading. This will have no affect if lock-cursor is on.",
-			"enable-if": "enable-trail",
 			"default": true
 		},
 		"advanced": {

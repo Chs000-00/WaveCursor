@@ -1,4 +1,5 @@
 #include "Cursor.hpp"
+#include "FixedTrailEffect.hpp"
 #include "Geode/binding/GameManager.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Geode/utils/cocos.hpp"
@@ -100,7 +101,22 @@ void SimpleCursor::createGhostTrail() {
          this->m_ghostTrail->setVisible(true); 
     } else {
         this->m_ghostTrail = GhostTrailEffect::create();
-        this->m_ghostTrail->runWithTarget(this->getSimplePlayer()->m_firstLayer, 0.05, 0.4, -1, 0.6, false);
+        // this->m_ghostTrail->runWithTarget(, 0.05, 0.4, -1, 0.6, false);
+
+        this->m_ghostTrail->m_iconSprite = this->getSimplePlayer()->m_firstLayer;
+        this->m_ghostTrail->m_snapshotInterval = 0.05;
+        this->m_ghostTrail->m_fadeInterval = 0.4;
+        // if (0.6 <= .1f) 0.6 = .1f;
+        this->m_ghostTrail->m_scaleTwice = false;
+        this->m_ghostTrail->m_ghostScale = 0.6;
+        this->schedule(schedule_selector(fixedTrailSnapshot)), 0.05);
+        if (-1 > 0.f) this->runAction(cocos2d::CCSequence::create(
+            cocos2d::CCDelayTime::create(-1),
+            cocos2d::CCCallFunc::create(this, callfunc_selector(GhostTrailEffect::stopTrail)),
+            nullptr
+        ));
+        
+      
         // this->m_ghostTrail->doBlendAdditive();
         this->m_ghostTrail->m_color = ccBLACK;
         OverlayManager::get()->addChild(m_ghostTrail);
@@ -118,7 +134,7 @@ void SimpleCursor::update(float dt) {
         // I love absolllute (position)
         this->m_plainTrail->setPosition(this->convertToWorldSpace(this->getSimplePlayer()->getPosition()));
     } else if (this->m_ghostTrail) {
-        this->m_ghostTrail->trailSnapshot(dt);
+        // this->m_ghostTrail->trailSnapshot(dt);
     }
 }
 

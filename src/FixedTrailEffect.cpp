@@ -1,12 +1,7 @@
-
-#include "Geode/cocos/actions/CCAction.h"
-#include "Geode/cocos/actions/CCActionInterval.h"
-#include "Geode/cocos/layers_scenes_transitions_nodes/CCLayer.h"
-#include "Geode/cocos/sprite_nodes/CCSprite.h"
 #include <Geode/Geode.hpp>
 #include <Geode/binding/GhostTrailEffect.hpp>
-#include <Geode/binding/HardStreak.hpp>
-#include <Geode/binding/SimplePlayer.hpp>
+
+#include "FixedTrailEffect.hpp"
 
 using namespace geode::prelude;
 

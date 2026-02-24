@@ -1,4 +1,4 @@
-# 1.1.2
+# 1.1.3
 
 - Added Cursor trails
 - Fixed Changing to fullscreen breaking the cursor

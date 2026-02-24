@@ -2,15 +2,12 @@
 #include "Geode/binding/GameManager.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Geode/utils/cocos.hpp"
-#include "ccTypes.h"
-#include <Geode/Enums.hpp>
 #include <Geode/binding/GhostTrailEffect.hpp>
 #include <Geode/binding/HardStreak.hpp>
 
 using namespace geode::prelude;
 
 // Stolen from createtogether lol
-
 SimpleCursor* SimpleCursor::create(const CursorData& cursorData) {
     auto ret = new SimpleCursor();
     if (ret->init(cursorData)) {
@@ -103,6 +100,16 @@ void SimpleCursor::createGhostTrail() {
          this->m_ghostTrail->setVisible(true); 
     } else {
         this->m_ghostTrail = GhostTrailEffect::create();
+        this->m_ghostTrail->runWithTarget(this->getSimplePlayer()->m_firstLayer, 0.05, 0.4, -1, 0.6, false);
+        // this->m_ghostTrail->doBlendAdditive();
+        this->m_ghostTrail->m_color = ccBLACK;
+        OverlayManager::get()->addChild(m_ghostTrail);
+        this->m_ghostTrail->setVisible(false);
+
+        // CCLayer* ghostContainer = CCLayer::create();
+        // ghostContainer->setID("ghost-container"_spr);
+        // OverlayManager::get()->addChild(ghostContainer);
+        // this->m_ghostTrail->m_objectLayer = ghostContainer;
     }
 }
 
@@ -110,6 +117,8 @@ void SimpleCursor::update(float dt) {
     if(this->m_plainTrail) {
         // I love absolllute (position)
         this->m_plainTrail->setPosition(this->convertToWorldSpace(this->getSimplePlayer()->getPosition()));
+    } else if (this->m_ghostTrail) {
+        this->m_ghostTrail->trailSnapshot(dt);
     }
 }
 

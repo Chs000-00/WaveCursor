@@ -23,8 +23,7 @@
             "max": 90,
             "control": {
                 "slider": true
-            },
-			"enable-if": "enable-cursor"
+            }
         },
 		"trail": {
 			"type": "title",
@@ -36,6 +35,17 @@
 			"description": "Enable or disable showing a trail following the mouse cursor",
 			"default": true
 		},
+		"trail-type": {
+			"type": "string",
+			"name": "Trail type",
+			"description": "What type of trail should the mouse inherit?",
+			"one-of": [
+				"Plain Trail",
+				"Ghost Trail"
+			],
+			"enable-if": "enable-trail",
+			"default": "Plain Trail"
+		},
 		"advanced": {
 			"type": "title",
 			"name": "Advanced settings"
@@ -43,7 +53,7 @@
 		"always-force-hide-cursor": {
             "type": "bool",
             "name": "Always force hide cursor.",
-			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing.",
+			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing, but may cause issues on MacOS!",
 			"default": false
         }
 	},

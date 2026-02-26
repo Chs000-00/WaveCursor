@@ -1,3 +1,4 @@
+#import <Cocoa/Cocoa.h>
 #include <Geode/Geode.hpp>
 #include "Platform.hpp"
 
@@ -18,7 +19,13 @@ void PlatformManager::init() {
 
 }
 
+@interface GLFWContentView : NSView
+{
 
+}
+@end
+
+@implementation GLFWContentView : NSView
 - (void)mouseExited:(NSEvent *)event
 {
     
@@ -31,3 +38,5 @@ void PlatformManager::init() {
     platform = PlatformManager::get();   
     platform->setCursorVisibility(false);
 }
+
+@end

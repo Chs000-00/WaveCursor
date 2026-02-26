@@ -109,7 +109,7 @@ void SimpleCursor::createGhostTrail() {
         // if (0.6 <= .1f) 0.6 = .1f;
         this->m_ghostTrail->m_scaleTwice = false;
         this->m_ghostTrail->m_ghostScale = 0.6;
-        this->schedule(schedule_selector(fixedTrailSnapshot)), 0.05);
+        this->schedule(schedule_selector(BetterGhostTrailEffect::fixedTrailSnapshot), 0.05);
         if (-1 > 0.f) this->runAction(cocos2d::CCSequence::create(
             cocos2d::CCDelayTime::create(-1),
             cocos2d::CCCallFunc::create(this, callfunc_selector(GhostTrailEffect::stopTrail)),

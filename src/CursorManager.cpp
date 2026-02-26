@@ -4,7 +4,6 @@
 #include <Geode/binding/GameManager.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
 #include <Geode/binding/PlayLayer.hpp>
-#include "alphalaneous.alphas-ui-pack/include/API.hpp" // IWYU pragma: keep
 
 
 void CursorManager::createCursor() {
@@ -56,7 +55,8 @@ void CursorManager::update() {
     this->m_cursor->setPosition(getMousePos());
 
     if(this->m_forceHide) {
-        alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
+        // TODO: HIDE CURSOR
+        // alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
     }
 
 

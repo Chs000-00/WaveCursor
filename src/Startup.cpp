@@ -1,7 +1,6 @@
 #include "CursorManager.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
-#include "alphalaneous.alphas-ui-pack/include/API.hpp" // IWYU pragma: keep
 
 using namespace geode::prelude;
 
@@ -15,8 +14,8 @@ public:
 
 $execute {
 
-    alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
-
+    // TODO: HIDE CURSOR
+    // alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
     auto c =  CursorManager::get();
 
     c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");

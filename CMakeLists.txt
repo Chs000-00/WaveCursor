@@ -11,11 +11,20 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(WaveCursor VERSION 1.1.3)
 
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS 
+file(GLOB_RECURSE CPPSOURCES CONFIGURE_DEPENDS 
     src/*.cpp
     src/settings/*.cpp
     src/hooks/*.cpp
+    src/platform/*.cpp
 )
+
+if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+    file(GLOB_RECURSE OBJCXXSOURCES CONFIGURE_DEPENDS src/platform/*.mm)
+    enable_language(OBJCXX)
+    set(SOURCES ${CPPSOURCES} ${OBJCXXSOURCES})
+else()
+    set(SOURCES ${CPPSOURCES})
+endif()
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
@@ -26,5 +35,6 @@ else()
 endif()
 
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+
 
 setup_geode_mod(${PROJECT_NAME})

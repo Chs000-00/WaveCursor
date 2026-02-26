@@ -8,8 +8,9 @@ using namespace geode::prelude;
 
 static std::mutex s_mutex;
 static std::condition_variable s_cv;
-static int s_signal = 0;
+static siginfo_t* s_siginfo = nullptr;
 static ucontext_t* s_context = nullptr;
+static int s_signal = 0;
 
 void PlatformManager::resetCursor() {
     if (this->m_previouslyHidden != this->m_hidden) {
@@ -37,8 +38,9 @@ static void handlerThread() {
 }
 
 extern "C" void signalHandler(int signal, siginfo_t* signalInfo, void* vcontext) {
-    
+
 	auto context = reinterpret_cast<ucontext_t*>(vcontext);
+    
     {
         std::unique_lock<std::mutex> lock(s_mutex);
         s_signal = signal;

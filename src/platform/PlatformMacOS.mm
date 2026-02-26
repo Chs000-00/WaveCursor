@@ -23,13 +23,11 @@ void PlatformManager::init() {
 {
     
     platform = PlatformManager::get();   
-    if (window->cursorMode == platform->getIsHidden())
-        platform->setCursorVisibility(true);
+    platform->setCursorVisibility(true);
 }
 
 - (void)mouseEntered:(NSEvent *)event
 {
     platform = PlatformManager::get();   
-    if (window->cursorMode == platform->getIsHidden())
-        platform->setCursorVisibility(false);
+    platform->setCursorVisibility(false);
 }

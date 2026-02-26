@@ -148,7 +148,7 @@ void BetterGhostTrailEffect::fixedTrailSnapshot(float p0) {
   CCSprite* v18; // x0
   int v21; // w0
   cocos2d::CCFiniteTimeAction* v23; // x21
-  __int64 v24; // x0
+  int64_t v24; // x0
   cocos2d::CCAction* v25; // x0
   cocos2d::CCFiniteTimeAction* v26; // x23
   CCFadeTo* v27; // x21

@@ -9,7 +9,7 @@ using namespace geode::prelude;
 static std::mutex s_mutex;
 static std::condition_variable s_cv;
 static int s_signal = 0;
-
+static ucontext_t* s_context = nullptr;
 
 void PlatformManager::resetCursor() {
     if (this->m_previouslyHidden != this->m_hidden) {
@@ -37,14 +37,8 @@ static void handlerThread() {
 }
 
 extern "C" void signalHandler(int signal, siginfo_t* signalInfo, void* vcontext) {
-
-    // for some reason this is needed, dont ask me why
-	#ifdef GEODE_IS_INTEL_MAC
-	s_backtrace[2] = reinterpret_cast<void*>(context->uc_mcontext->__ss.__rip);
-	#else
-	s_backtrace[2] = reinterpret_cast<void*>(context->uc_mcontext->__ss.__pc);
-	#endif
-
+    
+	auto context = reinterpret_cast<ucontext_t*>(vcontext);
     {
         std::unique_lock<std::mutex> lock(s_mutex);
         s_signal = signal;

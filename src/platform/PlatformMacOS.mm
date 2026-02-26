@@ -16,27 +16,7 @@ void PlatformManager::resetCursor() {
 }
 
 void PlatformManager::init() {
-
+    GameEvent(GameEventType::Exiting).listen([] {
+        PlatformManager::get()->setCursorVisibility(true);
+    }).leak();
 }
-
-@interface GLFWContentView : NSView
-{
-
-}
-@end
-
-@implementation GLFWContentView : NSView
-- (void)mouseExited:(NSEvent *)event
-{
-    
-    auto platform = PlatformManager::get();   
-    platform->setCursorVisibility(true);
-}
-
-- (void)mouseEntered:(NSEvent *)event
-{
-    auto platform = PlatformManager::get();   
-    platform->setCursorVisibility(false);
-}
-
-@end

@@ -13,7 +13,6 @@ public:
 
 
 $execute {
-
     // TODO: HIDE CURSOR
     // alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
     auto c =  CursorManager::get();

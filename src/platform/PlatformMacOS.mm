@@ -29,13 +29,13 @@ void PlatformManager::init() {
 - (void)mouseExited:(NSEvent *)event
 {
     
-    platform = PlatformManager::get();   
+    var platform = PlatformManager::get();   
     platform->setCursorVisibility(true);
 }
 
 - (void)mouseEntered:(NSEvent *)event
 {
-    platform = PlatformManager::get();   
+    var platform = PlatformManager::get();   
     platform->setCursorVisibility(false);
 }
 

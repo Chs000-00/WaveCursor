@@ -13,6 +13,7 @@ static ucontext_t* s_context = nullptr;
 static int s_signal = 0;
 
 void PlatformManager::resetCursor() {
+    log::info("Changing cursor state: {} {}", this->m_previouslyShown, this->m_shown);
     if (this->m_previouslyShown != this->m_shown) {
         if (this->m_shown) {
             [NSCursor hide];
@@ -24,6 +25,8 @@ void PlatformManager::resetCursor() {
 }
 
 static void handlerThread() {
+    log::info("Waiting in WaveCursor unhide thread");
+    
     std::unique_lock<std::mutex> lock(s_mutex);
     s_cv.wait(lock, [] { return s_signal != 0; });
 

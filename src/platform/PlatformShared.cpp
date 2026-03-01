@@ -8,6 +8,7 @@ bool PlatformManager::getIsHidden() {
 }
 
 void PlatformManager::setCursorVisibility(bool visible) {
+    log::info("Updating cursor visibility...");
     this->m_shown = visible;
     this->resetCursor();
 }

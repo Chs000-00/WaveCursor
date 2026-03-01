@@ -8,10 +8,9 @@ private:
     bool m_previouslyShown = true;
     void resetCursor();
     void update();
-    void init();
 
 public:
     void setCursorVisibility(bool visible);
     bool getIsHidden();
-
+    void init();
 };

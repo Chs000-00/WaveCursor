@@ -19,6 +19,7 @@ $execute {
 
 
     auto platform = PlatformManager::get();
+    platform->init();
     platform->setCursorVisibility(false);
 
     auto c =  CursorManager::get();

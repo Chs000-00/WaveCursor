@@ -65,9 +65,7 @@ void CursorManager::update() {
     if (auto* playLayer = PlayLayer::get()) {
         auto g = GameManager::get();
         if (!g->getGameVariable(GameVar::ShowCursor)) {
-            canShowInLevel = playLayer->m_hasCompletedLevel || 
-                playLayer->m_isPaused || 
-                !(g->getGameVariable(GameVar::LockCursor));   
+            canShowInLevel = playLayer->m_hasCompletedLevel || playLayer->m_isPaused;
         }
     }
 

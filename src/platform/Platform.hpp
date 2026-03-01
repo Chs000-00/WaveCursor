@@ -4,8 +4,8 @@
 
 class PlatformManager: public Singleton<PlatformManager> {
 private:
-    bool m_hidden = false;
-    bool m_previouslyHidden = false;
+    bool m_shown = false;
+    bool m_previouslyShown = true;
     void resetCursor();
     void update();
     void init();

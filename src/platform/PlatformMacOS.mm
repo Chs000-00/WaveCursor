@@ -13,13 +13,13 @@ static ucontext_t* s_context = nullptr;
 static int s_signal = 0;
 
 void PlatformManager::resetCursor() {
-    if (this->m_previouslyHidden != this->m_hidden) {
-        if (this->m_hidden) {
+    if (this->m_previouslyShown != this->m_shown) {
+        if (this->m_shown) {
             [NSCursor hide];
         } else {
             [NSCursor unhide];
         }
-        this->m_previouslyHidden = this->m_hidden;
+        this->m_previouslyShown = this->m_shown;
     }
 }
 

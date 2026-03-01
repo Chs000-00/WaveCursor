@@ -44,6 +44,7 @@ bool SimpleCursor::init(const CursorData& cursorData) {
         return false;
     }
 
+
     this->m_cursorSprite = SimplePlayer::create(0);
     this->addChild(this->m_cursorSprite);
     this->setZOrder(10000);
@@ -53,7 +54,6 @@ bool SimpleCursor::init(const CursorData& cursorData) {
     this->updateCursor(cursorData);
 
     CCScheduler::get()->scheduleUpdateForTarget(this, 5500, false);
-
     return true;
 }
 

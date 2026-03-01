@@ -1,8 +1,7 @@
 #include "../CursorManager.hpp"
-#include "Geode/cocos/CCCamera.h"
 #include "Geode/cocos/menu_nodes/CCMenu.h"
 #include <Geode/Modify/VideoOptionsLayer.hpp>
-#include <Geode/binding/MenuLayer.hpp>
+#include <Geode/Modify/MenuLayer.hpp>
 #include <Geode/binding/VideoOptionsLayer.hpp>
 
 using namespace geode::prelude;

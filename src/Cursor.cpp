@@ -46,6 +46,7 @@ bool SimpleCursor::init(const CursorData& cursorData) {
 
     this->m_cursorSprite = SimplePlayer::create(0);
     this->addChild(this->m_cursorSprite);
+    this->setZOrder(10000);
 
     this->setContentSize(this->m_cursorSprite->m_outlineSprite->getScaledContentSize());
     this->m_cursorSprite->setPosition(this->m_cursorSprite->m_outlineSprite->getScaledContentSize() / 2);
@@ -76,7 +77,7 @@ void SimpleCursor::createPlainTrail() {
         this->m_plainTrail->setBlendFunc({ GL_SRC_ALPHA, GL_ONE });   
         OverlayManager::get()->addChild(this->m_plainTrail);
         this->m_plainTrail->setID("cursor-plain-trail"_spr); 
-        this->m_plainTrail->setZOrder(-1);
+        this->m_plainTrail->setZOrder(9999);
     }
 }
 

@@ -1,4 +1,5 @@
 #include "CursorManager.hpp"
+#include "platform/Platform.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
 
@@ -15,6 +16,11 @@ public:
 $execute {
     // TODO: HIDE CURSOR
     // alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
+
+
+    auto platform = PlatformManager::get();
+    platform->setCursorVisibility(false);
+
     auto c =  CursorManager::get();
 
     c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
@@ -24,7 +30,7 @@ $execute {
 
     
     Loader::get()->queueInMainThread([]{
-        CCScheduler::get()->scheduleUpdateForTarget(new BasicScheduler{}, 5000, false);
+        CCScheduler::get()->scheduleUpdateForTarget(new BasicScheduler{}, 2000, false);
     });
 
 

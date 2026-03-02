@@ -39,10 +39,10 @@ static void handlerThread() {
     // auto signalAddress = reinterpret_cast<void*>(s_context->uc_mcontext->__ss.__pc);
     // #endif
     log::info("WaveCursor handled an exception");
-    s_signal = 0;
     [NSCursor unhide];
 
     old_handler(s_signal);
+    s_signal = 0;
 }
 
 extern "C" void signalHandler(int signal, siginfo_t* signalInfo, void* vcontext) {
@@ -63,11 +63,8 @@ extern "C" void signalHandler(int signal, siginfo_t* signalInfo, void* vcontext)
 
 
 void PlatformManager::init() {
-    GameEvent(GameEventType::Exiting).listen([] {
-        log::info("Caught exit gameevent. Showing cursor...");
-        PlatformManager::get()->setCursorVisibility(true);
-    }).leak();
 
+    this->sharedInit();
 
     struct sigaction action;
     struct sigaction old;
@@ -85,7 +82,7 @@ void PlatformManager::init() {
     sigaction(SIGBUS, nullptr, &old);
 
     // Copy the pointer from the old sigactions
-    old_handler = &old.sa_handler;
+    old_handler = old.sa_handler;
 
     if (!old.sa_handler) {
         log::warn("handler is nullptr");

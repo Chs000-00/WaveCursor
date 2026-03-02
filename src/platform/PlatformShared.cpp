@@ -12,3 +12,10 @@ void PlatformManager::setCursorVisibility(bool visible) {
     this->m_shown = visible;
     this->resetCursor();
 }
+
+void PlatformManager::sharedInit() {
+    GameEvent(GameEventType::Exiting).listen([] {
+        log::info("Caught exit GameEvent. Unhiding cursor...");
+        PlatformManager::get()->setCursorVisibility(true);
+    }).leak();
+}

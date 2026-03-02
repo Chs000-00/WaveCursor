@@ -85,10 +85,14 @@ void PlatformManager::init() {
     sigaction(SIGBUS, nullptr, &old);
 
     // Copy the pointer from the old sigactions
-    old_handler = old.sa_handler;
+    old_handler = &old.sa_handler;
 
-    if (old_handler == nullptr) {
-        log::warn("btw its nullptr!");
+    if (!old.sa_handler) {
+        log::warn("handler is nullptr");
+    }
+
+    if (!old.sa_sigaction) {
+        log::warn("sigaction is nullptr");
     }
 
     // Hook the sigactions!

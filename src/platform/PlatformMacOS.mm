@@ -85,7 +85,7 @@ void PlatformManager::init() {
     // Copy the pointer from the old sigactions
     old_handler = old.sa_handler;
 
-    log::info("handler + action {} {}", old.sa_handler, old.sa_sigaction);
+    log::info("handler + action {} {}", fmt::ptr(old.sa_handler), fmt::ptr(old.sa_sigaction));
 
 
     // Hook the sigactions!

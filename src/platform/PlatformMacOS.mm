@@ -71,6 +71,7 @@ void PlatformManager::init() {
     action.sa_sigaction = &signalHandler;
     action.sa_flags = SA_SIGINFO;
     sigemptyset(&action.sa_mask);
+    sigemptyset(&old.sa_mask);
 
     // Copy all current sigactions to old
     sigaction(SIGSEGV, nullptr, &old);
@@ -84,13 +85,8 @@ void PlatformManager::init() {
     // Copy the pointer from the old sigactions
     old_handler = old.sa_handler;
 
-    if (!old.sa_handler) {
-        log::warn("handler is nullptr");
-    }
+    log::info("handler + action {} {}", old.sa_handler, old.sa_sigaction, *old.sa_handler, *old.sa_sigaction);
 
-    if (!old.sa_sigaction) {
-        log::warn("sigaction is nullptr");
-    }
 
     // Hook the sigactions!
     sigaction(SIGSEGV, &action, nullptr);

@@ -68,7 +68,8 @@ void SimpleCursor::createPlainTrail() {
         auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
         log::info("Loading PlainStreak {}", sprite);
         this->m_plainTrail->setTexture(CCTextureCache::get()->addImage(sprite.c_str(), true));
-        this->m_plainTrail->reset();
+        // this->m_plainTrail->reset();
+        this->m_plainTrail->resumeStroke();
     } else {
         auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
         log::info("Loading PlainStreak {}", sprite);
@@ -78,7 +79,14 @@ void SimpleCursor::createPlainTrail() {
         OverlayManager::get()->addChild(this->m_plainTrail);
         this->m_plainTrail->setID("cursor-plain-trail"_spr); 
         this->m_plainTrail->setZOrder(9999);
+
+        // Fix cc sometimes not showing the trail
+        // Needs to be atleast minSeg distance?
+        this->m_plainTrail->setPosition({1, 1});
+        this->m_plainTrail->setStartingPositionInitialized(true);
     }
+    
+    //log::info("TR: {}", this->m_plainTrail->isStartingPositionInitialized());
 }
 
 

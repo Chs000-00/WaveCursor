@@ -1,3 +1,8 @@
+# 1.2.0
+
+- Removed Alpha's UI dependency
+- Internally changed how the platform cursor is hidden/shown to fix some issues  
+
 # 1.1.3
 
 - Added Cursor trails

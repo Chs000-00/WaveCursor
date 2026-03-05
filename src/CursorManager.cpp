@@ -1,6 +1,7 @@
 #include "CursorManager.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Cursor.hpp"
+#include "platform/Platform.hpp"
 #include <Geode/binding/GameManager.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
 #include <Geode/binding/PlayLayer.hpp>
@@ -36,7 +37,7 @@ void CursorManager::createCursor() {
     this->m_cursor->setScale(this->m_cursorSize);
 
     auto trailType = Mod::get()->getSettingValue<std::string>("trail-type");
-
+    log::info("Creating trailType {}", trailType);
     if(this->m_enableTrail) {
         if (trailType == "Plain Trail") {
             // this->m_cursor->m_trail = SimpleCursor::Plain;
@@ -56,7 +57,7 @@ void CursorManager::update() {
 
     if(this->m_forceHide) {
         // TODO: HIDE CURSOR
-        // alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
+       PlatformManager::get()->setCursorVisibility(false);
     }
 
 

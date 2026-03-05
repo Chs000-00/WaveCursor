@@ -1,4 +1,3 @@
-#include "Geode/loader/Log.hpp"
 #import <Cocoa/Cocoa.h>
 #include <Geode/Geode.hpp>
 #include "Platform.hpp"
@@ -16,7 +15,6 @@ static int s_signal = 0;
 static void(*old_handler)(int);
 
 void PlatformManager::resetCursor() {
-    log::info("Changing cursor state: {} {}", this->m_previouslyShown, this->m_shown);
     if (this->m_previouslyShown != this->m_shown) {
         if (this->m_shown) {
             [NSCursor unhide];

@@ -9,6 +9,7 @@ class BasicScheduler : public CCObject {
 public:
     void update(float dt) {
         CursorManager::get()->update();
+        PlatformManager::get()->update();
     }
 };
 

@@ -1,7 +1,7 @@
 #include <Geode/Geode.hpp>
 #include "Platform.hpp"
 
-#ifdef GEODE_WINDOWS
+#ifdef GEODE_IS_WINDOWS
 #include <winuser.h>
 
 using namespace geode::prelude;

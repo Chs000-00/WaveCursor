@@ -1,3 +1,7 @@
+# 1.2.1
+
+- Fix on more games button cahsing a game crash.
+
 # 1.2.0
 
 - Trail should now appear more often

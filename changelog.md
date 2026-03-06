@@ -1,5 +1,7 @@
 # 1.2.0
 
+- Trail should now appear more often
+- Fix cursor showing up when its not supposed to
 - Removed Alpha's UI dependency
 - Internally changed how the platform cursor is hidden/shown to fix some issues  
 

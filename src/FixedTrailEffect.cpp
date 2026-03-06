@@ -131,106 +131,106 @@ using namespace geode::prelude;
 //     }
 //   }
 // }
-void BetterGhostTrailEffect::fixedTrailSnapshot(float p0) {
-//   CCSprite* this->m_iconSprite; // x21
-  cocos2d::CCSprite* v4; // x0
-  cocos2d::CCTexture2D* v5; // x1
-  cocos2d::CCSprite* v6; // x20
-  cocos2d::CCSpriteFrame* v8; // x0
-  const cocos2d::CCPoint* v9; // x0
-  float v10; // s9
-  float v11; // s0
-  CCSprite* v12; // x0
-  float v13; // s8
-  char isFlipX; // w0
-  char isFlipY; // w0
-  cocos2d::CCLayer* m_objectLayer; // x23
-  CCSprite* v18; // x0
-  int v21; // w0
-  cocos2d::CCFiniteTimeAction* v23; // x21
-  int64_t v24; // x0
-  cocos2d::CCAction* v25; // x0
-  cocos2d::CCFiniteTimeAction* v26; // x23
-  CCFadeTo* v27; // x21
-  CCCallFunc* v28; // x0
-  cocos2d::CCAction* v29; // x0
-  cocos2d::CCAction* v30; // x0
-  cocos2d::CCScaleTo* v31; // x21
-  CCScaleTo* v32; // x0
-  cocos2d::CCAction* v33; // x0
-  float m_fadeInterval; // s8
-  float v35; // s0
-  cocos2d::CCAction* v36; // x0
-  float v37; // [xsp+70h] [xbp+70h]
-  cocos2d::CCPoint v38; // [xsp+80h] [xbp+80h] BYREF
-//   __int64 v39; // [xsp+88h] [xbp+88h] BYREF
-//   __int64 v40; // [xsp+90h] [xbp+90h] BYREF
-//   __int64 v41; // [xsp+98h] [xbp+98h] BYREF
-  cocos2d::CCPoint v42; // [xsp+A0h] [xbp+A0h] BYREF
+// void BetterGhostTrailEffect::fixedTrailSnapshot(float p0) {
+// //   CCSprite* this->m_iconSprite; // x21
+//   cocos2d::CCSprite* v4; // x0
+//   cocos2d::CCTexture2D* v5; // x1
+//   cocos2d::CCSprite* v6; // x20
+//   cocos2d::CCSpriteFrame* v8; // x0
+//   const cocos2d::CCPoint* v9; // x0
+//   float v10; // s9
+//   float v11; // s0
+//   CCSprite* v12; // x0
+//   float v13; // s8
+//   char isFlipX; // w0
+//   char isFlipY; // w0
+//   cocos2d::CCLayer* m_objectLayer; // x23
+//   CCSprite* v18; // x0
+//   int v21; // w0
+//   cocos2d::CCFiniteTimeAction* v23; // x21
+//   int64_t v24; // x0
+//   cocos2d::CCAction* v25; // x0
+//   cocos2d::CCFiniteTimeAction* v26; // x23
+//   CCFadeTo* v27; // x21
+//   CCCallFunc* v28; // x0
+//   cocos2d::CCAction* v29; // x0
+//   cocos2d::CCAction* v30; // x0
+//   cocos2d::CCScaleTo* v31; // x21
+//   CCScaleTo* v32; // x0
+//   cocos2d::CCAction* v33; // x0
+//   float m_fadeInterval; // s8
+//   float v35; // s0
+//   cocos2d::CCAction* v36; // x0
+//   float v37; // [xsp+70h] [xbp+70h]
+//   cocos2d::CCPoint v38; // [xsp+80h] [xbp+80h] BYREF
+// //   __int64 v39; // [xsp+88h] [xbp+88h] BYREF
+// //   __int64 v40; // [xsp+90h] [xbp+90h] BYREF
+// //   __int64 v41; // [xsp+98h] [xbp+98h] BYREF
+//   cocos2d::CCPoint v42; // [xsp+A0h] [xbp+A0h] BYREF
 
-  this->m_iconSprite = this->m_iconSprite;
-  //v4 = (this->m_iconSprite->getTexture)(this->m_iconSprite,* &p0);
-//   v6 = cocos2d::CCSprite::createWithTexture(v4, v5);
-//   if ( this->m_iconSprite->displayFrame(this->m_iconSprite) )
+//   this->m_iconSprite = this->m_iconSprite;
+//   //v4 = (this->m_iconSprite->getTexture)(this->m_iconSprite,* &p0);
+// //   v6 = cocos2d::CCSprite::createWithTexture(v4, v5);
+// //   if ( this->m_iconSprite->displayFrame(this->m_iconSprite) )
+// //   {
+// //     setDisplayFrame = v6->setDisplayFrame;
+// //     v8 = this->m_iconSprite->displayFrame(this->m_iconSprite);
+// //     setDisplayFrame(v6, v8);
+// //   }
+
+//   v6->setBlendFunc(*&this->m_blendFunc);
+
+//   v10 = this->m_iconSprite->getScaleX() * this->m_playerScale;
+//   v11 = this->m_iconSprite->getScaleY();
+//   v12 = this->m_iconSprite;
+//   v13 = v11 * this->m_playerScale;
+//   if ( v12 && v12->getScaleY() < 0.0 )
+//     v13 = -v13;
+//   v6->setPosition(v38);
+//   isFlipX = this->m_iconSprite->isFlipX();
+//   v6->setFlipX(isFlipX);
+//   isFlipY = this->m_iconSprite->isFlipY();
+//   v6->setFlipY(isFlipY);
+//   this->m_iconSprite->getRotation();
+//   v6->setColor(this->m_color);
+//   v6->setScaleX(v10);
+//   v6->setScaleY(v13);
+//   m_objectLayer = this->m_objectLayer;
+//   if ( !m_objectLayer )
+//     m_objectLayer = (CCLayer*)this->m_iconSprite->getParent();
+//   v21 = this->m_iconSprite->getZOrder();
+//   m_objectLayer->addChild(v6, v21 - 1);
+//   if ( this->m_scaleTwice )
 //   {
-//     setDisplayFrame = v6->setDisplayFrame;
-//     v8 = this->m_iconSprite->displayFrame(this->m_iconSprite);
-//     setDisplayFrame(v6, v8);
+//     v6->setOpacity(0);
+//     v6->setScale(this->m_ghostScale * this->m_playerScale);
+//     v26 = cocos2d::CCFadeTo::create(this->m_fadeInterval * 0.5, this->m_opacity);
+//     v27 = cocos2d::CCFadeTo::create(this->m_fadeInterval * 0.5, 0);
+//     // v28 = cocos2d::CCCallFunc::create(v6, 520);
+//     v29 = cocos2d::CCSequence::create(v26, v27, v28, 0);
+//     v30 = v6->runAction(v29);
+//     if ( this->m_ghostScale != 1.0 )
+//     {
+//       v31 = cocos2d::CCScaleTo::create(this->m_fadeInterval * 0.5, 1.0);
+//       v32 = cocos2d::CCScaleTo::create(this->m_fadeInterval * 0.5, this->m_ghostScale * this->m_playerScale);
+//       v33 = cocos2d::CCSequence::create(v31, v32, 0);
+//       v6->runAction(v33);
+//     }
 //   }
-
-  v6->setBlendFunc(*&this->m_blendFunc);
-
-  v10 = this->m_iconSprite->getScaleX() * this->m_playerScale;
-  v11 = this->m_iconSprite->getScaleY();
-  v12 = this->m_iconSprite;
-  v13 = v11 * this->m_playerScale;
-  if ( v12 && v12->getScaleY() < 0.0 )
-    v13 = -v13;
-  v6->setPosition(v38);
-  isFlipX = this->m_iconSprite->isFlipX();
-  v6->setFlipX(isFlipX);
-  isFlipY = this->m_iconSprite->isFlipY();
-  v6->setFlipY(isFlipY);
-  this->m_iconSprite->getRotation();
-  v6->setColor(this->m_color);
-  v6->setScaleX(v10);
-  v6->setScaleY(v13);
-  m_objectLayer = this->m_objectLayer;
-  if ( !m_objectLayer )
-    m_objectLayer = (CCLayer*)this->m_iconSprite->getParent();
-  v21 = this->m_iconSprite->getZOrder();
-  m_objectLayer->addChild(v6, v21 - 1);
-  if ( this->m_scaleTwice )
-  {
-    v6->setOpacity(0);
-    v6->setScale(this->m_ghostScale * this->m_playerScale);
-    v26 = cocos2d::CCFadeTo::create(this->m_fadeInterval * 0.5, this->m_opacity);
-    v27 = cocos2d::CCFadeTo::create(this->m_fadeInterval * 0.5, 0);
-    // v28 = cocos2d::CCCallFunc::create(v6, 520);
-    v29 = cocos2d::CCSequence::create(v26, v27, v28, 0);
-    v30 = v6->runAction(v29);
-    if ( this->m_ghostScale != 1.0 )
-    {
-      v31 = cocos2d::CCScaleTo::create(this->m_fadeInterval * 0.5, 1.0);
-      v32 = cocos2d::CCScaleTo::create(this->m_fadeInterval * 0.5, this->m_ghostScale * this->m_playerScale);
-      v33 = cocos2d::CCSequence::create(v31, v32, 0);
-      v6->runAction(v33);
-    }
-  }
-  else
-  {
-    v6->setOpacity(this->m_opacity);
-    v23 = cocos2d::CCFadeTo::create(this->m_fadeInterval, 0);
-    //v24 = cocos2d::CCCallFunc::create(v6, 520);
-    v25 = cocos2d::CCSequence::create(v23, v24, 0);
-    v6->runAction(v25);
-    if ( this->m_ghostScale != 1.0 )
-    {
-      m_fadeInterval = this->m_fadeInterval;
-      v37 = (v6->getScaleX() * this->m_ghostScale) * this->m_playerScale;
-      v35 = v6->getScaleY();
-      v36 = cocos2d::CCScaleTo::create(m_fadeInterval, v37, (v35 * this->m_ghostScale) * this->m_playerScale);
-      v6->runAction(v36);
-    }
-  }
-}
+//   else
+//   {
+//     v6->setOpacity(this->m_opacity);
+//     v23 = cocos2d::CCFadeTo::create(this->m_fadeInterval, 0);
+//     //v24 = cocos2d::CCCallFunc::create(v6, 520);
+//     v25 = cocos2d::CCSequence::create(v23, v24, 0);
+//     v6->runAction(v25);
+//     if ( this->m_ghostScale != 1.0 )
+//     {
+//       m_fadeInterval = this->m_fadeInterval;
+//       v37 = (v6->getScaleX() * this->m_ghostScale) * this->m_playerScale;
+//       v35 = v6->getScaleY();
+//       v36 = cocos2d::CCScaleTo::create(m_fadeInterval, v37, (v35 * this->m_ghostScale) * this->m_playerScale);
+//       v6->runAction(v36);
+//     }
+//   }
+// }

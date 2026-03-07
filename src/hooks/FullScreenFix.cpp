@@ -14,6 +14,8 @@ class $modify(VideoOptionsLayer) {
 };
 
 
+// DO NOT CREATE A NEW RELEASE WITH THIS!!
+// THIS IS DEBUG CODE!!
 class $modify(MenuLayer) {
     void onMoreGames(CCObject* sender) {
         auto crash = dynamic_cast<CCMenu*>(sender);

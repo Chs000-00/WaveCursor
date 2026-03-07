@@ -38,7 +38,7 @@ void CursorManager::createCursor() {
 
     auto trailType = Mod::get()->getSettingValue<std::string>("trail-type");
     log::info("Creating trailType {}", trailType);
-    if(this->m_enableTrail) {
+    if(Mod::get()->getSettingValue<bool>("enable-trail")) {
         if (trailType == "Plain Trail") {
             // this->m_cursor->m_trail = SimpleCursor::Plain;
             this->m_cursor->createPlainTrail();
@@ -55,21 +55,15 @@ void CursorManager::createCursor() {
 void CursorManager::update() {
     this->m_cursor->setPosition(getMousePos());
 
-    if(this->m_forceHide) {
-        // TODO: HIDE CURSOR
-       PlatformManager::get()->setCursorVisibility(false);
-    }
-
-
     // eclipse moment
     bool canShowInLevel = true;
     if (auto* playLayer = PlayLayer::get()) {
         auto g = GameManager::get();
-        if (!g->getGameVariable(GameVar::ShowCursor)) {
-            canShowInLevel = playLayer->m_hasCompletedLevel || 
-                playLayer->m_isPaused || 
-                !(g->getGameVariable(GameVar::LockCursor));   
-        }
+        canShowInLevel = playLayer->m_hasCompletedLevel || 
+            playLayer->m_isPaused || 
+            ((!g->getGameVariable(GameVar::LockCursor)) && g->getGameVariable(GameVar::ShowCursor));   
+
+
     }
 
     this->m_cursor->setVisible(canShowInLevel);
@@ -77,8 +71,4 @@ void CursorManager::update() {
 
 void CursorManager::setCursorSize(int size) {
     this->m_cursorSize = ((float)size)/100;
-}
-
-void CursorManager::enableTrail(bool enable) {
-    this->m_enableTrail = enable;
 }

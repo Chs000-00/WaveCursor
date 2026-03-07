@@ -6,7 +6,7 @@
 	},
 	"id": "chs000.wavecursor",
 	"name": "Wave Cursor",
-	"version": "v1.2.0",
+	"version": "v1.2.3",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
 	"settings": {

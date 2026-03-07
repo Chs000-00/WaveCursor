@@ -14,7 +14,6 @@ public:
     bool m_forceHide = false;
 
     void createCursor();
-    void enableTrail(bool enable);
     void update();
     void setCursorSize(int size);
 };

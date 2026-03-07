@@ -12,3 +12,12 @@ class $modify(VideoOptionsLayer) {
         CursorManager::get()->createCursor();
     }
 };
+
+
+class $modify(MenuLayer) {
+    void onMoreGames(CCObject* sender) {
+        auto crash = dynamic_cast<CCMenu*>(sender);
+        crash->_setZOrder(1);
+        MenuLayer::onMoreGames(sender);
+    }
+};

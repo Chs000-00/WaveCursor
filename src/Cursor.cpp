@@ -68,44 +68,25 @@ void SimpleCursor::createPlainTrail() {
         auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
         log::info("Loading PlainStreak {}", sprite);
         this->m_plainTrail->setTexture(CCTextureCache::get()->addImage(sprite.c_str(), true));
+        // this->m_plainTrail->reset();
+        this->m_plainTrail->resumeStroke();
     } else {
         auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
         log::info("Loading PlainStreak {}", sprite);
         auto texture = CCTextureCache::get()->addImage(sprite.c_str(), true);
-        this->m_plainTrail = CCMotionStreak::create(0.3, 2, 10, ccWHITE, texture);
+        this->m_plainTrail = CCMotionStreak::create(0.5, 5, 10, ccWHITE, texture);
         this->m_plainTrail->setBlendFunc({ GL_SRC_ALPHA, GL_ONE });   
         OverlayManager::get()->addChild(this->m_plainTrail);
         this->m_plainTrail->setID("cursor-plain-trail"_spr); 
         this->m_plainTrail->setZOrder(9999);
-        // Fix stupid shit
+
+        // Fix cc sometimes not showing the trail
+        // Needs to be atleast minSeg distance?
+        this->m_plainTrail->setPosition({1, 1});
+        this->m_plainTrail->setStartingPositionInitialized(true);
     }
-
-    this->m_plainTrail->m_bRepeatMode = false;
-
-    switch (gm->getPlayerStreak()) {
-        case 2:
-        case 7:
-            this->m_plainTrail->setStroke(14.0);
-            break;
-        case 3:
-            this->m_plainTrail->setStroke(8.5);
-            break;
-        case 4:
-            this->m_plainTrail->updateFade(0.4);
-            this->m_plainTrail->setStroke(10.0);
-            break;
-        case 5:
-            this->m_plainTrail->updateFade(0.6);
-            this->m_plainTrail->setStroke(5.0);
-            break;
-        case 6:
-            this->m_plainTrail->setStroke(3);
-            this->m_plainTrail->updateFade(1.0);
-            this->m_plainTrail->enableRepeatMode(0.1);
-            break;
-    }
-
-    this->m_plainTrail->m_fMaxSeg = 500.0;
+    
+    //log::info("TR: {}", this->m_plainTrail->isStartingPositionInitialized());
 }
 
 
@@ -128,15 +109,39 @@ void SimpleCursor::createGhostTrail() {
     if (this->m_ghostTrail) {
          this->m_ghostTrail->setVisible(true); 
     } else {
-    
+        this->m_ghostTrail = GhostTrailEffect::create();
+        // this->m_ghostTrail->runWithTarget(, 0.05, 0.4, -1, 0.6, false);
+
+        this->m_ghostTrail->m_iconSprite = this->getSimplePlayer()->m_firstLayer;
+        this->m_ghostTrail->m_snapshotInterval = 0.05;
+        this->m_ghostTrail->m_fadeInterval = 0.4;
+        // if (0.6 <= .1f) 0.6 = .1f;
+        this->m_ghostTrail->m_scaleTwice = false;
+        this->m_ghostTrail->m_ghostScale = 0.6;
+        this->schedule(schedule_selector(BetterGhostTrailEffect::fixedTrailSnapshot), 0.05);
+        if (-1 > 0.f) this->runAction(cocos2d::CCSequence::create(
+            cocos2d::CCDelayTime::create(-1),
+            cocos2d::CCCallFunc::create(this, callfunc_selector(GhostTrailEffect::stopTrail)),
+            nullptr
+        ));
+        
+      
+        // this->m_ghostTrail->doBlendAdditive();
+        this->m_ghostTrail->m_color = ccBLACK;
+        OverlayManager::get()->addChild(m_ghostTrail);
+        this->m_ghostTrail->setVisible(false);
+
+        // CCLayer* ghostContainer = CCLayer::create();
+        // ghostContainer->setID("ghost-container"_spr);
+        // OverlayManager::get()->addChild(ghostContainer);
+        // this->m_ghostTrail->m_objectLayer = ghostContainer;
     }
 }
 
 void SimpleCursor::update(float dt) {
-    if(true) {
+    if(this->m_plainTrail) {
         // I love absolllute (position)
         this->m_plainTrail->setPosition(this->convertToWorldSpace(this->getSimplePlayer()->getPosition()));
-        this->m_plainTrail->setOpacity(this->getOpacity());
     } else if (this->m_ghostTrail) {
         // this->m_ghostTrail->trailSnapshot(dt);
     }

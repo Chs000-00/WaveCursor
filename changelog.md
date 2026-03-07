@@ -1,17 +1,5 @@
-# 1.2.2
-
-- Fix race condition crash
-- Fix certain scenarios where the cursor would not show up
-- Fix trail bug, possibly.
-
-# 1.2.1
-
-- Fix on more games button cahsing a game crash.
-
 # 1.2.0
 
-- Trail should now appear more often
-- Fix cursor showing up when its not supposed to
 - Removed Alpha's UI dependency
 - Internally changed how the platform cursor is hidden/shown to fix some issues  
 

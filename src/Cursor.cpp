@@ -78,8 +78,34 @@ void SimpleCursor::createPlainTrail() {
         this->m_plainTrail->setID("cursor-plain-trail"_spr); 
         this->m_plainTrail->setZOrder(9999);
         // Fix stupid shit
-        this->m_plainTrail->setPosition({20, 20});
     }
+
+    this->m_plainTrail->m_bRepeatMode = false;
+
+    switch (gm->getPlayerStreak()) {
+        case 2:
+        case 7:
+            this->m_plainTrail->setStroke(14.0);
+            break;
+        case 3:
+            this->m_plainTrail->setStroke(8.5);
+            break;
+        case 4:
+            this->m_plainTrail->updateFade(0.4);
+            this->m_plainTrail->setStroke(10.0);
+            break;
+        case 5:
+            this->m_plainTrail->updateFade(0.6);
+            this->m_plainTrail->setStroke(5.0);
+            break;
+        case 6:
+            this->m_plainTrail->setStroke(3);
+            this->m_plainTrail->updateFade(1.0);
+            this->m_plainTrail->enableRepeatMode(0.1);
+            break;
+    }
+
+    this->m_plainTrail->m_fMaxSeg = 500.0;
 }
 
 

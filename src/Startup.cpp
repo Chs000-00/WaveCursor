@@ -1,4 +1,5 @@
 #include "CursorManager.hpp"
+#include "Geode/modify/Modify.hpp"
 #include "platform/Platform.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
@@ -15,14 +16,26 @@ public:
 
 
 $execute {
-    // TODO: HIDE CURSOR
-    // alpha::prelude::CursorManager::get()->setCursor(alpha::prelude::Cursor::NONE);
-
+    auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
+
+    platform->init();
 
     // c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
     // c->enableTrail(Mod::get()->getSettingValue<bool>("enable-trail"));
     c->setCursorSize(Mod::get()->getSettingValue<int>("cursor-size"));
+
+    // Fix stupid shit
+    c->createCursor();
+    platform->setCursorVisibility(false);
+
+    Loader::get()->queueInMainThread([]{
+        CCScheduler::get()->scheduleUpdateForTarget(new BasicScheduler{}, 2000, false);
+    });
+
+    GameEvent(GameEventType::Loaded).listen([] {
+        CursorManager::get()->createCursor();
+    }).leak();
 
     // Init Setting callbacks
     
@@ -33,22 +46,5 @@ $execute {
     listenForSettingChanges<bool>("enable-trail", [](bool value) { auto c = CursorManager::get(); c->createCursor();});
 
     // listenForSettingChanges<std::string>("trail-type", [](std::string value) { CursorManager::get()->createCursor();});
-
-}
-
-
-$on_game(Loaded) {
-    auto platform = PlatformManager::get();
-    auto c =  CursorManager::get();
-
-    platform->init();
-
-    // Fix stupid shit
-    c->createCursor();
-    platform->setCursorVisibility(false);
-
-    Loader::get()->queueInMainThread([]{
-        CCScheduler::get()->scheduleUpdateForTarget(new BasicScheduler{}, 2000, false);
-    });
 
 }

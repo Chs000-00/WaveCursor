@@ -1,3 +1,9 @@
+# 1.2.2
+
+- Fix race condition crash
+- Fix certain scenarios where the cursor would not show up
+- Fix trail bug, possibly.
+
 # 1.2.1
 
 - Fix on more games button cahsing a game crash.

@@ -46,15 +46,16 @@
 			"enable-if": "enable-trail",
 			"default": "Plain Trail"
 		},
-		"advanced": {
-			"type": "title",
-			"name": "Advanced settings"
-		},
-		"always-force-hide-cursor": {
-            "type": "bool",
-            "name": "Always force hide cursor.",
-			"description": "Hide the platform cursor every game update. This may fix some issues with the platform cursor reappearing, but may cause issues on MacOS!",
-			"default": false
+		"trail-width": {
+            "type": "float",
+            "name": "Trail Width",
+			"description": "How wide should the cursor's trail appear?",
+            "default": 10,
+            "min": 5,
+            "max": 20,
+            "control": {
+                "slider": true
+            }
         }
 	},
 	"tags": [

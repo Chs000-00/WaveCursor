@@ -43,11 +43,11 @@ $execute {
 
     // Init Setting callbacks
     
-    listenForSettingChanges<bool>("always-force-hide-cursor", [](bool value) { CursorManager::get()->m_forceHide = value; });
+    listenForSettingChanges<int>("cursor-size", [](int value) { auto c = CursorManager::get(); c->setCursorSize(value); c->createCursor(); });
 
-    listenForSettingChanges<int>("cursor-size", [](int value) { auto c = CursorManager::get(); c->setCursorSize(value); c->createCursor();});
+    listenForSettingChanges<bool>("enable-trail", [](bool value) { auto c = CursorManager::get(); c->createCursor(); });
 
-    listenForSettingChanges<bool>("enable-trail", [](bool value) { auto c = CursorManager::get(); c->createCursor();});
+    listenForSettingChanges<float>("trail-width", [](float value) { auto c = CursorManager::get(); c->createCursor(); });
 
-    // listenForSettingChanges<std::string>("trail-type", [](std::string value) { CursorManager::get()->createCursor();});
+    listenForSettingChanges<std::string>("trail-type", [](std::string value) { auto c = CursorManager::get(); c->createCursor(); });
 }

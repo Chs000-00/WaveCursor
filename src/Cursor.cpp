@@ -74,37 +74,27 @@ void SimpleCursor::createPlainTrail() {
         auto sprite = "streak_0" + std::to_string(gm->getPlayerStreak()) + "_001.png";
         log::info("Loading PlainStreak {}", sprite);
         auto texture = CCTextureCache::get()->addImage(sprite.c_str(), true);
-        this->m_plainTrail = CCMotionStreak::create(0.3, 2, 10, ccWHITE, texture);
+        this->m_plainTrail = CCMotionStreak::create(
+            0.3,
+            2,
+            10,
+            ccWHITE,
+            texture
+        );
         this->m_plainTrail->setBlendFunc({ GL_SRC_ALPHA, GL_ONE });   
         OverlayManager::get()->addChild(this->m_plainTrail);
         this->m_plainTrail->setID("cursor-plain-trail"_spr); 
         this->m_plainTrail->setZOrder(9999);
     }
 
-    this->m_plainTrail->m_bRepeatMode = false;
-
-    switch (gm->getPlayerStreak()) {
-        case 2:
-        case 7:
-            this->m_plainTrail->setStroke(14.0);
-            break;
-        case 3:
-            this->m_plainTrail->setStroke(8.5);
-            break;
-        case 4:
-            this->m_plainTrail->updateFade(0.4);
-            this->m_plainTrail->setStroke(10.0);
-            break;
-        case 5:
-            this->m_plainTrail->updateFade(0.6);
-            this->m_plainTrail->setStroke(5.0);
-            break;
-        case 6:
-            this->m_plainTrail->setStroke(3);
-            this->m_plainTrail->updateFade(1.0);
+    if (gm->getPlayerStreak() == 6) {
             this->m_plainTrail->enableRepeatMode(0.1);
-            break;
+    } else {
+        this->m_plainTrail->m_bRepeatMode = false;
+        this->m_plainTrail->setStroke(Mod::get()->getSettingValue<float>("trail-width"));
     }
+
+    this->m_plainTrail->m_fMaxSeg = 500.0;
 }
 
 

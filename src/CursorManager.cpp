@@ -62,8 +62,6 @@ void CursorManager::update() {
         canShowInLevel = playLayer->m_hasCompletedLevel || 
             playLayer->m_isPaused || 
             ((!g->getGameVariable(GameVar::LockCursor)) && g->getGameVariable(GameVar::ShowCursor));   
-
-
     }
 
     this->m_cursor->setVisible(canShowInLevel);

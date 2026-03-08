@@ -11,8 +11,6 @@ private:
     Ref<SimpleCursor> m_cursor = nullptr;
 
 public:
-    bool m_forceHide = false;
-
     void createCursor();
     void update();
     void setCursorSize(int size);

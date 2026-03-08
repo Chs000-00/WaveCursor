@@ -150,7 +150,6 @@ void SimpleCursor::update(float dt) {
     if(this->m_plainTrail) {
         // I love absolllute (position)
         this->m_plainTrail->setPosition(this->convertToWorldSpace(this->getSimplePlayer()->getPosition()));
-        this->m_plainTrail->setOpacity(this->getOpacity());
     } else if (this->m_ghostTrail) {
         // this->m_ghostTrail->trailSnapshot(dt);
     }

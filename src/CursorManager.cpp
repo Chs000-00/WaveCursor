@@ -36,17 +36,17 @@ void CursorManager::createCursor() {
     this->m_cursor->setRotation(240);
     this->m_cursor->setScale(this->m_cursorSize);
 
-    auto trailType = Mod::get()->getSettingValue<std::string>("trail-type");
-    log::info("Creating trailType {}", trailType);
+    // auto trailType = Mod::get()->getSettingValue<std::string>("trail-type");
+    // log::info("Creating trailType {}", trailType);
     if(Mod::get()->getSettingValue<bool>("enable-trail")) {
-        if (trailType == "Plain Trail") {
+        // if (trailType == "Plain Trail") {
             // this->m_cursor->m_trail = SimpleCursor::Plain;
             this->m_cursor->createPlainTrail();
-        } else if (trailType == "Ghost Trail") {
+        /* }  else if (trailType == "Ghost Trail") {
             this->m_cursor->createGhostTrail();
         } else {
             log::error("Could not find trailType {}", trailType);
-        }
+        } */
     } else {
         this->m_cursor->disableAllTrails();
     }
@@ -65,6 +65,7 @@ void CursorManager::update() {
     }
 
     this->m_cursor->setVisible(canShowInLevel);
+    this->m_cursor->setVisibleTrail(canShowInLevel);
 }
 
 void CursorManager::setCursorSize(int size) {

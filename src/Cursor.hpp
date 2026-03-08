@@ -51,8 +51,13 @@ public:
     bool isCascadeOpacityEnabled() { return m_cursorSprite->isCascadeOpacityEnabled(); }
     void setCascadeOpacityEnabled(bool cascadeOpacityEnabled) { m_cursorSprite->setCascadeOpacityEnabled(cascadeOpacityEnabled); }
     void updateDisplayedOpacity(GLubyte opacity) { m_cursorSprite->updateDisplayedOpacity(opacity); }
-
     // TrailType m_trail;
+
+    void setVisibleTrail(bool visible) {
+        if (this->m_plainTrail) { this->m_plainTrail->setVisible(visible); }
+        if (this->m_ghostTrail) { this->m_ghostTrail->setVisible(visible); }
+        if (this->m_hardTrail) { this->m_hardTrail->setVisible(visible); }
+    }
 
     void createPlainTrail();
     void createGhostTrail();

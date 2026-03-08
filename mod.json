@@ -35,17 +35,6 @@
 			"description": "Enable or disable showing a trail following the mouse cursor",
 			"default": true
 		},
-		"trail-type": {
-			"type": "string",
-			"name": "Trail type",
-			"description": "What type of trail should the mouse inherit?",
-			"one-of": [
-				"Plain Trail",
-				"Ghost Trail"
-			],
-			"enable-if": "enable-trail",
-			"default": "Plain Trail"
-		},
 		"trail-width": {
             "type": "float",
             "name": "Trail Width",

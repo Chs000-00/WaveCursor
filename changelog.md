@@ -1,3 +1,7 @@
+# 1.2.3
+
+- Fix opacity crash?
+
 # 1.2.2
 
 - Fix race condition crash

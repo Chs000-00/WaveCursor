@@ -10,7 +10,7 @@
 
 # 1.2.1
 
-- Fix on more games button cahsing a game crash.
+- Fix on more games button ~~cahsing~~ causing a game crash.
 
 # 1.2.0
 

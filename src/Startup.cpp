@@ -25,7 +25,7 @@ $execute {
 
     // c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
     c->setCursorSize(Mod::get()->getSettingValue<int>("cursor-size"));
-
+    c->enableDisableTrail(Mod::get()->getSettingValue<bool>("enable-trail"));
     // Fix stupid shit
 
 
@@ -45,7 +45,7 @@ $execute {
     
     listenForSettingChanges<int>("cursor-size", [](int value) { auto c = CursorManager::get(); c->setCursorSize(value); c->createCursor(); });
 
-    listenForSettingChanges<bool>("enable-trail", [](bool value) { auto c = CursorManager::get(); c->createCursor(); });
+    listenForSettingChanges<bool>("enable-trail", [](bool value) { auto c = CursorManager::get(); c->enableDisableTrail(value); c->createCursor(); });
 
     listenForSettingChanges<float>("trail-width", [](float value) { auto c = CursorManager::get(); c->createCursor(); });
 

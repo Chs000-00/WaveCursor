@@ -12,6 +12,7 @@ private:
 
 public:
     void createCursor();
+    void enableDisableTrail(bool state);
     void update();
     void setCursorSize(int size);
 };

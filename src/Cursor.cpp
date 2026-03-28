@@ -94,7 +94,7 @@ void SimpleCursor::createPlainTrail() {
         this->m_plainTrail->setStroke(Mod::get()->getSettingValue<float>("trail-width"));
     }
 
-    this->m_plainTrail->m_fMaxSeg = 500.0;
+    this->m_plainTrail->m_fMaxSeg = 200.0;
 }
 
 

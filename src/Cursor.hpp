@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Geode/cocos/sprite_nodes/CCSprite.h"
 #include <Geode/Geode.hpp>
 #include <Geode/binding/GhostTrailEffect.hpp>
 #include <Geode/binding/HardStreak.hpp>
@@ -71,8 +72,11 @@ protected:
     CursorData m_cursorData;
 
     Ref<SimplePlayer> m_cursorSprite = nullptr;
+    Ref<CCSprite> m_ohMySog = nullptr;
 
     Ref<CCMotionStreak> m_plainTrail = nullptr;
     Ref<GhostTrailEffect> m_ghostTrail = nullptr;
     Ref<HardStreak> m_hardTrail = nullptr;
+
+    void aprilFoolsActivity();
 };

@@ -1,3 +1,7 @@
+# 1.2.4  
+
+- Fixed trail not hiding when settingwas disabled
+
 # 1.2.3
 
 - Fix opacity crash?

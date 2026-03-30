@@ -1,12 +1,16 @@
 #include "Cursor.hpp"
 #include "FixedTrailEffect.hpp"
 #include "Geode/binding/GameManager.hpp"
+#include "Geode/loader/Log.hpp"
 #include "Geode/ui/OverlayManager.hpp"
 #include "Geode/utils/cocos.hpp"
 #include <Geode/binding/GhostTrailEffect.hpp>
 #include <Geode/binding/HardStreak.hpp>
 
 using namespace geode::prelude;
+
+#include <chrono>
+
 
 // Stolen from createtogether lol
 SimpleCursor* SimpleCursor::create(const CursorData& cursorData) {
@@ -33,6 +37,8 @@ void SimpleCursor::updateCursor(const CursorData& cursorData) {
     else {
         this->m_cursorSprite->disableGlowOutline();
     }
+
+    this->aprilFoolsActivity();
 }
 
 SimplePlayer* SimpleCursor::getSimplePlayer() {
@@ -43,8 +49,6 @@ bool SimpleCursor::init(const CursorData& cursorData) {
     if (!CCNode::init()) {
         return false;
     }
-
-
     this->m_cursorSprite = SimplePlayer::create(0);
     this->addChild(this->m_cursorSprite);
     this->setZOrder(10000);
@@ -159,4 +163,34 @@ void SimpleCursor::disableAllTrails() {
     if (this->m_plainTrail) { this->m_plainTrail->setVisible(false); }
     if (this->m_hardTrail) { this->m_hardTrail->setVisible(false); }
     if (this->m_ghostTrail) { this->m_ghostTrail->setVisible(false); }
+}
+
+void SimpleCursor::aprilFoolsActivity() {
+    using namespace std::chrono;
+
+    auto now = std::chrono::system_clock::now();
+    auto timeNow = std::chrono::system_clock::to_time_t(now);
+    auto tm_local = asp::localtime(timeNow);
+
+    // log::debug("Check dga {} {}", tm_local.tm_mon, tm_local.tm_mday);
+    if (tm_local.tm_mon == 3 && tm_local.tm_mday == 1) {
+        log::info("Go my soggleys");
+        if (!this->m_ohMySog) {
+            this->m_ohMySog = CCSprite::create("sog.png"_spr);
+            this->addChild(this->m_ohMySog);
+            this->m_ohMySog->setAnchorPoint({0.25, 0.55});
+            this->m_ohMySog->setScale(0.5);
+
+        }
+        this->m_cursorSprite->setVisible(false);
+        this->setRotation(0);
+    } else {
+        this->m_cursorSprite->setVisible(true);
+        this->setRotation(240);
+
+        // when the clock strikes zero...
+        if (this->m_ohMySog) {
+            this->m_ohMySog = nullptr;
+        }
+    }
 }

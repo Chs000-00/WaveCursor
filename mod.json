@@ -6,7 +6,7 @@
 	},
 	"id": "chs000.wavecursor",
 	"name": "Wave Cursor",
-	"version": "v1.2.3",
+	"version": "v1.2.4",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
 	"settings": {
@@ -52,5 +52,10 @@
 	],
 	"links": {
 		"source": "https://github.com/Chs000-00/WaveCursor"
-	}
+	},
+    "resources": {
+        "sprites": [
+            "resources/sog.png"
+        ]
+    }
 }

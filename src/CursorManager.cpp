@@ -32,7 +32,6 @@ void CursorManager::createCursor() {
     
     this->m_cursor->setAnchorPoint(ccp(1.0f, 0.5f));
 
-    this->m_cursor->setRotation(240);
     this->m_cursor->setScale(this->m_cursorSize);
 
     // auto trailType = Mod::get()->getSettingValue<std::string>("trail-type");

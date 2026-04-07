@@ -1,6 +1,6 @@
 # 1.2.4  
 
-- Fixed trail not hiding when settingwas disabled
+- Fixed trail not hiding when setting was disabled
 
 # 1.2.3
 

@@ -18,20 +18,7 @@ file(GLOB_RECURSE CPPSOURCES CONFIGURE_DEPENDS
     src/platform/*.cpp
 )
 
-if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
-    file(GLOB_RECURSE OBJCXXSOURCES CONFIGURE_DEPENDS src/platform/*.mm)
-    enable_language(OBJCXX)
-    set(SOURCES ${CPPSOURCES} ${OBJCXXSOURCES})
-else()
-    set(SOURCES ${CPPSOURCES})
-endif()
-
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
-
-if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
-    find_library(COCOA_LIBRARY Cocoa REQUIRED)
-    target_link_libraries(${PROJECT_NAME} ${COCOA_LIBRARY})
-endif()
 
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")

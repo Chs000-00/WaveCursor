@@ -8,6 +8,7 @@ private:
     float m_cursorSize;
     bool m_enableTrail = false;
 
+
     Ref<SimpleCursor> m_cursor = nullptr;
 
 public:
@@ -15,4 +16,5 @@ public:
     void enableDisableTrail(bool state);
     void update();
     void setCursorSize(int size);
+    bool m_show = false;
 };

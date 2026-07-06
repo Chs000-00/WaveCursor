@@ -54,18 +54,18 @@ void CursorManager::update() {
     this->m_cursor->setPosition(getMousePos());
 
     // eclipse moment
-    bool canShowInLevel = true;
-    if (auto* playLayer = PlayLayer::get()) {
-        auto g = GameManager::get();
-        canShowInLevel = playLayer->m_hasCompletedLevel || 
-            playLayer->m_isPaused || 
-            ((!g->getGameVariable(GameVar::LockCursor)) && g->getGameVariable(GameVar::ShowCursor));   
-    }
+    // bool canShowInLevel = true;
+    // if (auto* playLayer = PlayLayer::get()) {
+    //     auto g = GameManager::get();
+    //     canShowInLevel = playLayer->m_hasCompletedLevel || 
+    //         playLayer->m_isPaused || 
+    //         ((!g->getGameVariable(GameVar::LockCursor)) && g->getGameVariable(GameVar::ShowCursor));   
+    // }
 
-    this->m_cursor->setVisible(canShowInLevel);
+    this->m_cursor->setVisible(this->m_show);
 
     if (this->m_enableTrail) {
-        this->m_cursor->setVisibleTrail(canShowInLevel);
+        this->m_cursor->setVisibleTrail(this->m_show);
     }
 }
 

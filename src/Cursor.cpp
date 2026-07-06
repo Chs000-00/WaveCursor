@@ -51,7 +51,7 @@ bool SimpleCursor::init(const CursorData& cursorData) {
     }
     this->m_cursorSprite = SimplePlayer::create(0);
     this->addChild(this->m_cursorSprite);
-    this->setZOrder(10000);
+    this->setZOrder(10067);
 
     this->setContentSize(this->m_cursorSprite->m_outlineSprite->getScaledContentSize());
     this->m_cursorSprite->setPosition(this->m_cursorSprite->m_outlineSprite->getScaledContentSize() / 2);

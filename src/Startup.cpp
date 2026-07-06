@@ -1,6 +1,6 @@
 #include "CursorManager.hpp"
 #include "Geode/modify/Modify.hpp"
-#include "platform/Platform.hpp"
+// #include "platform/Platform.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/binding/PlatformToolbox.hpp>
 
@@ -10,18 +10,18 @@ class BasicScheduler : public CCObject {
 public:
     void update(float dt) {
         CursorManager::get()->update();
-        PlatformManager::get()->update();
+        // PlatformManager::get()->update();
     }
 };
 
 
 $execute {
-    auto platform = PlatformManager::get();
+    // auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
 
 
 
-    platform->init();
+    // platform->init();
 
     // c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
     c->setCursorSize(Mod::get()->getSettingValue<int>("cursor-size"));
@@ -30,7 +30,7 @@ $execute {
 
 
     c->createCursor();
-    platform->setCursorVisibility(false);
+    // platform->setCursorVisibility(false);
 
 
     Loader::get()->queueInMainThread([]{

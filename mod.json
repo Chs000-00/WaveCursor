@@ -1,11 +1,11 @@
 {
-	"geode": "5.3.0",
+	"geode": "5.7.1",
 	"gd": {
 		"win": "2.2081",
 		"mac": "2.2081"
 	},
 	"id": "chs000.wavecursor",
-	"name": "Cursors Wave-ified!",
+	"name": "Wave Cursor",
 	"version": "v1.2.4",
 	"developer": "chs000",
 	"description": "Changes your in-game cursor to your wave icon",
@@ -45,7 +45,22 @@
             "control": {
                 "slider": true
             }
-        }
+        },
+		"other": {
+			"type": "title",
+			"name": "Other"
+		},
+		"enable-override": {
+			"type": "string",
+			"name": "Enable Easter Egg",
+			"description": "wet.",
+			"one-of": [
+				"Sometimes",
+				"Always",
+				"NEVER (EVIL!)"
+			],
+			"default": "Sometimes"
+		}
 	},
 	"tags": [
 		"customization", "enhancement", "universal", "interface"

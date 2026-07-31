@@ -18,7 +18,7 @@ class $modify(CCEGLView) {
 class $modify(PlatformToolbox) {
     static void showCursor() {
         CursorManager::get()->m_show = true;
-        PlatformToolbox::showCursor();
+        // Don't call PlatformToolbox::showCursor() to hide default macOS cursor
     }
 
     static void hideCursor() {

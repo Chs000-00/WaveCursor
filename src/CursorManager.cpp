@@ -30,7 +30,7 @@ void CursorManager::createCursor() {
         this->m_cursor->updateCursor(data);
     }
     
-    this->m_cursor->setAnchorPoint(ccp(1.0f, 0.5f));
+    this->m_cursor->setAnchorPoint(ccp(0.5f, 0.5f));
 
     this->m_cursor->setScale(this->m_cursorSize);
 

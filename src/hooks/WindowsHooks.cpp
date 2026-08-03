@@ -27,4 +27,15 @@ class $modify(PlatformToolbox) {
     }
 };
 
+class $modify(CCEGLView) {
+    void onGLFWWindowFocusCallback(void* window, int focused) {
+        CCEGLView::onGLFWWindowFocusCallback(window, focused);
+
+        // Recreate cursor when window gains focus (handles monitor changes)
+        if (focused) {
+            CursorManager::get()->createCursor();
+        }
+    }
+};
+
 #endif

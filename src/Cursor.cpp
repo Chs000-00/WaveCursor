@@ -174,7 +174,7 @@ void SimpleCursor::aprilFoolsActivity() {
 
     auto overrideOption = Mod::get()->getSettingValue<std::string>("enable-override");
 
-    bool isApril = (tm_local.tm_mon == 3 && tm_local.tm_mday == 1)
+    bool isApril = (tm_local.tm_mon == 3 && tm_local.tm_mday == 1);
     bool optSometimes = (overrideOption == "Sometimes");
     bool optAlways = (overrideOption == "Always");
     // bool optNever = (overrideOption == "NEVER (EVIL!)");

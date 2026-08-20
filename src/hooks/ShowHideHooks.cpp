@@ -1,5 +1,5 @@
 #include "../CursorManager.hpp"
-#include <Geode/Modify/CCEglView.hpp>
+#include <Geode/modify/CCEGLView.hpp>
 
 using namespace geode::prelude;
 

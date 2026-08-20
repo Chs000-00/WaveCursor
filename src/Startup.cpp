@@ -32,12 +32,6 @@ $execute {
     // auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
 
-    // Just incase the hook still runs for some reason
-    ignoreWC = true;
-    CursorManager::get()->m_show = true;
-    CCEGLView::get()->showCursor(false);
-    ignoreWC = false;
-
     // platform->init();
 
     // c->m_forceHide = Mod::get()->getSettingValue<bool>("always-force-hide-cursor");
@@ -49,6 +43,11 @@ $execute {
     c->createCursor();
     // platform->setCursorVisibility(false);
 
+    // Just incase the hook still runs for some reason
+    ignoreWC = true;
+    CursorManager::get()->m_show = true;
+    CCEGLView::get()->showCursor(false);
+    ignoreWC = false;
 
     Loader::get()->queueInMainThread([]{
         CCScheduler::get()->scheduleUpdateForTarget(new BasicScheduler{}, 2000, false);

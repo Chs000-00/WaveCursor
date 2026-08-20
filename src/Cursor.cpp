@@ -188,17 +188,18 @@ void SimpleCursor::aprilFoolsActivity() {
             this->addChild(this->m_ohMySog);
             this->m_ohMySog->setAnchorPoint({0.25, 0.55});
             this->m_ohMySog->setScale(0.5);
-
         }
         this->m_cursorSprite->setVisible(false);
         this->setRotation(0);
+        this->m_ohMySog->setVisible(true);
     } else {
         this->m_cursorSprite->setVisible(true);
         this->setRotation(240);
+        this->m_ohMySog->setVisible(false);
 
         // when the clock strikes zero...
-        if (this->m_ohMySog) {
-            this->m_ohMySog = nullptr;
-        }
+        // if (this->m_ohMySog) {
+        //     this->m_ohMySog = nullptr;
+        // }
     }
 }

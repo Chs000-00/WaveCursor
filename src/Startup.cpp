@@ -10,12 +10,12 @@ static bool ignoreWC = false;
 
 class $modify(CCEGLView) {
     void showCursor(bool state) {
-        CursorManager::get()->m_show = state;
         // CCEGLView::showCursor(state);
         if (ignoreWC) {
             CCEGLView::showCursor(state);
             return;
         }
+        CursorManager::get()->m_show = state;
         CCEGLView::showCursor(false);
     }
 };

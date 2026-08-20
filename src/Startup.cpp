@@ -2,7 +2,7 @@
 #include "Geode/modify/Modify.hpp"
 // #include "platform/Platform.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/binding/PlatformToolbox.hpp>
+#include <Geode/binding/CCEglView.hpp>
 
 using namespace geode::prelude;
 
@@ -19,7 +19,7 @@ $execute {
     // auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
 
-
+    CCEGLView::get()->showCursor(true);
 
     // platform->init();
 

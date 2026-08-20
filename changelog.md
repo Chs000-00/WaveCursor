@@ -1,3 +1,8 @@
+# 1.3.0
+
+- The MacOS cursor now hides properly!
+- The cursor should now properly enable and disable when other mods want it to
+
 # 1.2.4  
 
 - Fixed trail not hiding when setting was disabled
@@ -14,7 +19,7 @@
 
 # 1.2.1
 
-- Fix on more games button ~~cahsing~~ causing a game crash.
+- Fix on more games button causing a game crash.
 
 # 1.2.0
 

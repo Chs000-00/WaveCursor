@@ -5,6 +5,14 @@
 
 using namespace geode::prelude;
 
+class $modify(MyView, CCEGLView) {
+    void showCursor(bool state) {
+        CursorManager::get()->m_show = state;
+        // CCEGLView::showCursor(state);
+        CCEGLView::showCursor(false);
+    }
+};
+
 class BasicScheduler : public CCObject {
 public:
     void update(float dt) {
@@ -18,7 +26,8 @@ $execute {
     // auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
 
-    CCEGLView::get()->showCursor(true);
+    CursorManager::get()->m_show = truw;
+    CCEGLView::showCursor(false);
 
     // platform->init();
 

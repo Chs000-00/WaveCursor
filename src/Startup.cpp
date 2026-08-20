@@ -45,8 +45,8 @@ $execute {
 
     // Just incase the hook still runs for some reason
     ignoreWC = true;
-    CursorManager::get()->m_show = true;
     CCEGLView::get()->showCursor(false);
+    CursorManager::get()->m_show = true;
     ignoreWC = false;
 
     Loader::get()->queueInMainThread([]{

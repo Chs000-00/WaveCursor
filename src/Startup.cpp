@@ -5,10 +5,17 @@
 
 using namespace geode::prelude;
 
-class $modify(MyView, CCEGLView) {
+// Just incase the hook still runs for some reason
+static bool ignoreWC = false;
+
+class $modify(CCEGLView) {
     void showCursor(bool state) {
         CursorManager::get()->m_show = state;
         // CCEGLView::showCursor(state);
+        if (ignoreWC) {
+            CCEGLView::showCursor(state);
+            return;
+        }
         CCEGLView::showCursor(false);
     }
 };
@@ -21,13 +28,15 @@ public:
     }
 };
 
-
 $execute {
     // auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
 
-    // CursorManager::get()->m_show = true;
-    MyView::get()->showCursor(true);
+    // Just incase the hook still runs for some reason
+    ignoreWC = true;
+    CursorManager::get()->m_show = true;
+    CCEGLView::get()->showCursor(false);
+    ignoreWC = false;
 
     // platform->init();
 

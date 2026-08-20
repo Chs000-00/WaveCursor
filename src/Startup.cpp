@@ -66,4 +66,6 @@ $execute {
     listenForSettingChanges<float>("trail-width", [](float value) { auto c = CursorManager::get(); c->createCursor(); });
 
     listenForSettingChanges<std::string>("trail-type", [](std::string value) { auto c = CursorManager::get(); c->createCursor(); });
+       
+    listenForSettingChanges<std::string>("enable-override", [](std::string value) { auto c = CursorManager::get(); c->createCursor(); });
 }

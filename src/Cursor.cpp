@@ -172,8 +172,16 @@ void SimpleCursor::aprilFoolsActivity() {
     auto timeNow = std::chrono::system_clock::to_time_t(now);
     auto tm_local = asp::localtime(timeNow);
 
+    auto overrideOption = Mod::get()->getSettingValue<std::string>("enable-override");
+
+    bool isApril = (tm_local.tm_mon == 3 && tm_local.tm_mday == 1)
+    bool optSometimes = (overrideOption == "Sometimes");
+    bool optAlways = (overrideOption == "Always");
+    // bool optNever = (overrideOption == "NEVER (EVIL!)");
+
+
     // log::debug("Check dga {} {}", tm_local.tm_mon, tm_local.tm_mday);
-    if (tm_local.tm_mon == 3 && tm_local.tm_mday == 1) {
+    if ((isApril && optSometimes) || optAlways) {
         log::info("Go my soggleys");
         if (!this->m_ohMySog) {
             this->m_ohMySog = CCSprite::create("sog.png"_spr);

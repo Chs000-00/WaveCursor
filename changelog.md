@@ -1,7 +1,11 @@
+# 1.3.1
+- Fixed a certain issue where a setting wouldn't apply
+
 # 1.3.0
 
 - The MacOS cursor now hides properly!
 - The cursor should now properly enable and disable when other mods want it to
+- Added soggy cat?
 
 # 1.2.4  
 

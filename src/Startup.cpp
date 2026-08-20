@@ -1,7 +1,7 @@
 #include "CursorManager.hpp"
 // #include "platform/Platform.hpp"
 #include <Geode/Geode.hpp>
-#include <Geode/binding/CCEGLView.hpp>
+#include <Geode/modify/CCEGLView.hpp>
 
 using namespace geode::prelude;
 

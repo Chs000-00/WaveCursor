@@ -26,8 +26,8 @@ $execute {
     // auto platform = PlatformManager::get();
     auto c =  CursorManager::get();
 
-    CursorManager::get()->m_show = truw;
-    CCEGLView::showCursor(false);
+    // CursorManager::get()->m_show = true;
+    MyView::get()->showCursor(true);
 
     // platform->init();
 
